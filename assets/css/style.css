@@ -40,7 +40,7 @@ button {
     background-color:yellow;
     font-weight: bolder;
     border-color: black;
-    border-width: 7px;
+    border-width: 3px;
     padding: 7px;
     border-radius: 11px;
     font-style: inherit;
@@ -59,15 +59,6 @@ button:active {
     box-shadow: 0 7px green;
     transform: translateY(4px);
   }
-
-#delete-btn  {
- color: yellow;
- background-color: purple;
-}
-
-#delete-btn:hover {
-    background-color: red;
-}
 
 header {
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -134,4 +125,4 @@ footer {
     }
     .wrapper {
         width: 600px;
-      }
+    }
