@@ -1,0 +1,142 @@
+#fromDatabase tr:nth-child(even){background-color: yellow;}
+#fromDatabase tr:nth-child(odd){background-color: lime;}
+
+  table, td, th,  tr {
+    border-collapse: separate;
+    border-color: black;
+    border-width: 3px;
+    border-style: solid;
+    font-size: 14px;
+    text-align: center;
+    padding: 10px 0;
+  }
+
+div {
+    display: inline-block;
+    font-size: 22px;
+    font-weight: bolder;
+    color: black;
+    text-align: center;
+    height: auto;
+    text-shadow: 2px 2px 4px #000;
+    box-shadow: 0 0 15px 8px #fff,  /* inner white */
+        0 0 25px 15px #f0f, /* middle magenta */
+        0 0 10px 5px #0ff; /* outer cyan */
+}
+
+.form-group {
+   background-color: lime; 
+   text-align: center;
+   font-size: 16px;
+   border-color: black;
+    border-width: 7px;
+    border-color: black;
+    border-style: solid;
+}
+
+.form-group:hover, tr {
+    background-color: red;
+}
+
+button {
+    cursor: pointer;
+    font-size: 35px;
+    color:#6F2DA8;
+    background-color:yellow;
+    font-weight: bolder;
+    border-color: black;
+    border-width: 7px;
+    padding: 7px;
+    border-radius: 11px;
+    font-style: inherit;
+    text-align: center;
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: black;/* border-color: yellow; */
+}
+
+button:hover {
+    background-color: red;
+    
+}
+
+button:active {
+    background-color:red; /* When the button is clicked */
+    box-shadow: 0 7px green;
+    transform: translateY(4px);
+  }
+
+#delete-btn  {
+ color: yellow;
+ background-color: purple;
+}
+
+#delete-btn:hover {
+    background-color: red;
+}
+
+header {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style: oblique;
+    font-size: 32px;
+    padding: 12px;
+    font-weight: bolder;
+    background-color: red;
+    
+}
+
+html, body {
+    text-align: center;
+    font-size: 18 px;
+    color: black;
+    padding: 2px;
+    background: url(./images/ny.jpeg);
+    background-size: 100%;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+
+footer {
+    text-align: center;
+    color:red;
+    border-top: 1px solid white;
+    background: transparent;
+    font-weight: bolder;
+}
+
+.wrapper {
+    width: 1024px;
+    margin: 40px auto;
+}
+  
+@media only screen and (max-width: 980px) {
+    body {
+        max-width: 100%;
+        height: auto;
+    }
+    .wrapper {
+        width: 800px;
+      }
+}
+
+@media only screen and (max-width: 768px) {
+    body {
+        max-width: 100%;
+        height: auto;
+    }
+    .wrapper {
+        width: 800px;
+      }
+}
+
+@media only screen and (max-width: 640px) {
+    body {
+        max-width: 100%;
+        height: auto;
+    }
+    header {
+        position: static;
+    }
+    .wrapper {
+        width: 600px;
+      }
