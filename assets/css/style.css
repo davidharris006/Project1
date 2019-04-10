@@ -19,9 +19,6 @@ div {
     text-align: center;
     height: auto;
     text-shadow: 2px 2px 4px #000;
-    box-shadow: 0 0 15px 8px #fff,  /* inner white */
-        0 0 25px 15px #f0f, /* middle magenta */
-        0 0 10px 5px #0ff; /* outer cyan */
 }
 
 .form-group {
@@ -51,7 +48,7 @@ button {
     font-style: inherit;
     text-align: center;
     -webkit-text-stroke-width: 3px;
-    -webkit-text-stroke-color: black;/* border-color: yellow; */
+    -webkit-text-stroke-color: black;
 }
 
 button:hover {
