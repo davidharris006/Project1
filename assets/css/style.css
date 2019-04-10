@@ -22,7 +22,7 @@ div {
 }
 
 .form-row {
-   background-color: lime; 
+   background-color: lightblue; 
    text-align: center;
    font-size: 16px;
    border-color: black;
@@ -31,9 +31,7 @@ div {
     border-style: solid;
 }
 
-.form-row:hover, tr {
-    background-color: red;
-}
+
 
 button {
     cursor: pointer;
