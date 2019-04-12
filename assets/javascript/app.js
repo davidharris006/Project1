@@ -48,7 +48,7 @@ $(document).ready(function () {
                   console.log(response)
               })
         
-
+              // YELP API
               var settings = {
                 "async": true,
                 "crossDomain": true,
@@ -62,7 +62,38 @@ $(document).ready(function () {
               }
               
               $.ajax(settings).done(function (response) {
-                console.log(response);
+                // console.log(response);
+                var results = response.businesses;
+                console.log(results);
+
+                $("#yelp").html('<table class="table"><thead><tr><th scope="col">#</th><th scope="col">First</th><th scope="col">Last</th><th scope="col">Handle</th></tr></thead><tbody>')
+
+
+                results.forEach(function(result) {
+                    // Creating a div to hold the hotel
+                    var hotelDiv = $("<div class='hotel'>");
+
+                    // Storing the name of the hotel
+                    var name = result.name;
+                    console.log(name);
+
+                    // Storing the price of the hotel
+                    var price = result.price;
+                    console.log(price);
+
+                    // Storing the URL of the hotel
+                    var url = result.url;
+                    console.log(url)
+
+                    // Creating a p tag with info
+                    var p = $("<p>").text("Name: " + name);
+
+                    // Appending the p tag to the Hotel Div we created
+                    hotelDiv.append(name)
+
+                    // Append the hotelDiv to the "#yelp" div in the HTML
+                    $("#yelp").append(hotelDiv);
+                });
               });
 
 
