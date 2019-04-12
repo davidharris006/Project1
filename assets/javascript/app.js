@@ -23,17 +23,14 @@ $(document).ready(function () {
     $("#startDate").val("");
     $("#endDate").val("");
 
-  
+
     var countChecked = function () {
       var n = $("input:checked").length;
-      $("div").text(n + (n === 1 ?));
+      console.log(n);
     };
     countChecked();
 
     $("input[type=checkbox]").on("click", countChecked);
-
-    console.log(from, destination, start, end, countChecked);
-
 
     return false;
 
