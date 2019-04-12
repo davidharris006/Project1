@@ -7,7 +7,7 @@ $(document).ready(function () {
     var destination = "";
     var start = "";
     var end = "";
-    
+
     var hotel = "";
     var car = "";
     var random = "";
@@ -36,8 +36,8 @@ $(document).ready(function () {
   $.ajax({
             url: `${queryURL}?location=sandiego,ca`, 
             headers: {
-                'Authorization': auth_header,
-                'X-Yahoo-App-Id': app_id 
+                'Authorization': Bearer aXJUKynsTUXLVY,
+                'X-Yahoo-App-Id': Von6uo78 
               }
             method: "GET"
         }).then(function (response) {
