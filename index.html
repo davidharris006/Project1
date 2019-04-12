@@ -19,7 +19,7 @@
 <body>
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
-      <h1>Travel</h1>
+      Travel
       <p>&nbsp;</p>
     </div>
   </div>
@@ -29,60 +29,58 @@
     <div class="col-lg-10">
       <form>
         <div class="form-row">
-          <div class="col-md-6">
+          <div class="col-md-3">
             <label for="inputFrom">From</label>
             <input type="text" class="form-control" id="from" placeholder="From">
           </div>
-          <div class="col-md-6">
+          <div class="col-md-3">
             <label for="inputDestination">Destination</label>
-            <input type="text" class="form-control" id="destination" placeholder="Destination">
+            <input type="text" class="form-control" id="destination" placeholder="Destination"><br>
           </div>
-        </div>
-        <div class="form-row">
-          <div class="col-md-6">
+          <div class="col-md-3">
             <label for="inputStartDate">Start Date</label>
             <input type="date" class="form-control" id="startDate" value="2019-08-19">
           </div>
-          <div class="col-md-6">
+          <div class="col-md-3">
             <label for="inputEndDate">End Date</label>
-            <input type="date" class="form-control" id="endDate" value="2019-08-19">
-          </div>
+            <input type="date" class="form-control" id="endDate" value="2019-08-19"><br>
+          </div><br>
         </div><br>
-        <div>
-          <input type="checkbox" value="hotel" checked> Hotel </input>
-          <input type="checkbox" value="car" checked> Rental Car </input>
-          <input type="checkbox" value="random" checked> Random Destination </input>
-        </div><br>
+        
+            <div class="check"> </div>
+        <br>
+        <br>
         <div class="col-lg-6">
           <button type="submit" id="submit-btn" class="btn btn-primary">SUBMIT</button>
         </div>
+
       </form>
     </div>
-  
 
-  <div class="row">
-    <div class="col-lg-8">
-      <p>response from APIs here</p>
+
+    <div class="row">
+      <div class="col-lg-8">
+        <p>response from APIs here</p>
+      </div>
+      <div class="col-lg-4">
+        <p>Weather info here</p>
+      </div>
     </div>
-    <div class="col-lg-4">
-      <p>Weather info here</p>
-    </div>
-  </div>
 
 
 
-  <!-- jQuery links -->
-  <script src="http://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-    crossorigin="anonymous"></script>
+    <!-- jQuery links -->
+    <script src="http://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+      crossorigin="anonymous"></script>
 
-  <!-- Bootstrap links -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
-  <script src="./assets/javascript/app.js"></script>
+    <!-- Bootstrap links -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"></script>
+    <script src="./assets/javascript/app.js"></script>
 </body>
 
 </html>
