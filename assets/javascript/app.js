@@ -33,20 +33,6 @@ $(document).ready(function () {
             }
         });
         
-<<<<<<< HEAD
-
-
-  $.ajax({
-            url: `${queryURL}?location=sandiego,ca`, 
-            headers: {
-                'Authorization': Bearer aXJUKynsTUXLVY,
-                'X-Yahoo-App-Id': Von6uo78 
-              }
-            method: "GET"
-        }).then(function (response) {
-            console.log(response)
-        })
-=======
         // url: `${countryURL}origin=SAN&destination=SFO&depart_date=${start.format("YYYY-MM")}&return_date=2019-09&token=0ec4333c4c239dc2eae21220f6504c30&currency=USD`,
     
         $.ajax({
@@ -61,8 +47,28 @@ $(document).ready(function () {
               }).then(function (response) {
                   console.log(response)
               })
->>>>>>> 121a6c6e64cd7f0cb28eec1f25ddbe775b153b2f
         
+
+              var settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": "https://api.yelp.com/v3/businesses/search?term=hotel&location=San%20Diego",
+                "method": "GET",
+                "headers": {
+                  "Authorization": "Bearer 8PjqRtWKJIqnBZiMXVyB_Vj0DSnztb_o9Nrn-vYpgAjiDiTmtoUn94UwnrLNfBYKa64OCp9zHcSsHaNfGOO2AaFqYuGjtmz2iJjgcNQ2Zo4UExt_foAbVBEfxAWwXHYx",
+                  "cache-control": "no-cache",
+                  "Postman-Token": "9b6b8187-1188-4a33-a6b7-11e21b552914"
+                }
+              }
+              
+              $.ajax(settings).done(function (response) {
+                console.log(response);
+              });
+
+
+
+
+
             //   http://api.travelpayouts.com/v1/prices/cheap?origin=MOW&destination=HKT&depart_date=2017-11&return_date=2017-12&token=
     //     $.ajax({
     //         url: `http://partners.api.skyscanner.net/apiservices/pricing/v1.0/US/USD/en-US/PARI-sky/LHR-sky/"2019-15-5"/?apiKey=ra66933236979928`,
