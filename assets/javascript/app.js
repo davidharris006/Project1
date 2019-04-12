@@ -8,7 +8,7 @@ $(document).ready(function () {
     var destination = "";
     var start = "";
     var end = "";
-    
+
     var hotel = "";
     var car = "";
     var random = "";
@@ -49,6 +49,27 @@ $(document).ready(function () {
         })
         
         
+
+              var settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": "https://api.yelp.com/v3/businesses/search?term=hotel&location=San%20Diego",
+                "method": "GET",
+                "headers": {
+                  "Authorization": "Bearer 8PjqRtWKJIqnBZiMXVyB_Vj0DSnztb_o9Nrn-vYpgAjiDiTmtoUn94UwnrLNfBYKa64OCp9zHcSsHaNfGOO2AaFqYuGjtmz2iJjgcNQ2Zo4UExt_foAbVBEfxAWwXHYx",
+                  "cache-control": "no-cache",
+                  "Postman-Token": "9b6b8187-1188-4a33-a6b7-11e21b552914"
+                }
+              }
+              
+              $.ajax(settings).done(function (response) {
+                console.log(response);
+              });
+
+
+
+
+
             //   http://api.travelpayouts.com/v1/prices/cheap?origin=MOW&destination=HKT&depart_date=2017-11&return_date=2017-12&token=
     //     $.ajax({
     //         url: `http://partners.api.skyscanner.net/apiservices/pricing/v1.0/US/USD/en-US/PARI-sky/LHR-sky/"2019-15-5"/?apiKey=ra66933236979928`,
