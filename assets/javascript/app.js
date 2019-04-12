@@ -8,7 +8,7 @@ $(document).ready(function () {
     var destination = "";
     var start = "";
     var end = "";
-    
+
     var hotel = "";
     var car = "";
     var random = "";
@@ -33,6 +33,20 @@ $(document).ready(function () {
             }
         });
         
+<<<<<<< HEAD
+
+
+  $.ajax({
+            url: `${queryURL}?location=sandiego,ca`, 
+            headers: {
+                'Authorization': Bearer aXJUKynsTUXLVY,
+                'X-Yahoo-App-Id': Von6uo78 
+              }
+            method: "GET"
+        }).then(function (response) {
+            console.log(response)
+        })
+=======
         // url: `${countryURL}origin=SAN&destination=SFO&depart_date=${start.format("YYYY-MM")}&return_date=2019-09&token=0ec4333c4c239dc2eae21220f6504c30&currency=USD`,
     
         $.ajax({
@@ -47,6 +61,7 @@ $(document).ready(function () {
               }).then(function (response) {
                   console.log(response)
               })
+>>>>>>> 121a6c6e64cd7f0cb28eec1f25ddbe775b153b2f
         
             //   http://api.travelpayouts.com/v1/prices/cheap?origin=MOW&destination=HKT&depart_date=2017-11&return_date=2017-12&token=
     //     $.ajax({
