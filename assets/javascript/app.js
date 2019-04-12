@@ -19,8 +19,9 @@ $(document).ready(function () {
             var data= $('<div>')
             data.text('Flight Price: ' + somearr.data[i].value)
             console.log(somearr.data[i].value)
-
+            box.append(data)
         }
+        $('#apidata').append(box)
     }
 
     $('#submit-btn').on('click', function (event) {
