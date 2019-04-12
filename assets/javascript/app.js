@@ -23,6 +23,7 @@ $(document).ready(function () {
     $("#startDate").val("");
     $("#endDate").val("");
 
+    console.log(from, destination, start, end);
 
     var countChecked = function () {
       var n = $("input:checked").length;
