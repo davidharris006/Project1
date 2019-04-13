@@ -93,10 +93,10 @@ $(document).ready(function () {
         var img = $('<img class="images" id ="image-'+ i + '">')
         img.attr("src", result[i].image_url)
          
-        hotelDiv.append(img)
-  
+        
         // Appending the p tag to the Hotel Div we created
-        hotelDiv.append(name)
+        hotelDiv.text(name + 'Price Range: ' + price + 'Contact: Phone-'+ result.phone)
+        hotelDiv.prepend(img)
   
         // Append the hotelDiv to the "#yelp" div in the HTML
         $("#yelp").append(hotelDiv);
