@@ -138,9 +138,10 @@ html, body {
     color: red;
     padding: 2px;
     background: url("../../images/hammock.jpg") no-repeat center center fixed;
-    background-size: 100%;
-    min-width: 100%;
-    min-height: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 
