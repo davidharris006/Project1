@@ -109,11 +109,11 @@ $(document).ready(function () {
 
   
   function appendCheck() {
-    var div = $("<div id=submit-btn>");
-    var checkbox = ['Hotel', 'Rental Car', 'Destination'];
+    var div = $("<div>");
+    var checkbox = ["<img src=./images/hotel-gif.gif>", "<img src=./images/car.gif>"];
     
     for (var i = 0; i < checkbox.length; i++) {
-      div.append("&nbsp&nbsp&nbsp" + "<input type='checkbox' checked='yes'>" + "</input>" + "&nbsp&nbsp" + checkbox[i] + "&nbsp&nbsp");
+      div.append("&nbsp&nbsp&nbsp" + "<div id=submit-btn>" + "<input type='checkbox' checked='yes'>" + "</input>" + "&nbsp&nbsp" + checkbox[i] + "&nbsp&nbsp&nbsp");
       // div.append(checkbox[i]);
     }
     $(".check").append(div);
