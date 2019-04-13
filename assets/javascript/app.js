@@ -91,7 +91,10 @@ $(document).ready(function () {
   
         // Creating a p tag with info
         var p = $("<p>").text("Name: " + name);
-        
+        var img = $('<img id ="'+ index + '">')
+        img.attr("src", result.image_url)
+         
+        hotelDiv.append(img)
   
         // Appending the p tag to the Hotel Div we created
         hotelDiv.append(name)
