@@ -1,11 +1,6 @@
 
 $(document).ready(function () {
 
-
-
-
-  // var queryURL = "https://weather-ydn-yql.media.yahoo.com/forecastrss"
-  // var queryURL = "http://partners.api.skyscanner.net/apiservices/pricing/v1.0/"
   function createAirlinedata(somearr) {
     var box = $('<div>');
     for (let i = 0; i < 10; i++) {
@@ -71,34 +66,38 @@ $(document).ready(function () {
     }
 
     $.ajax(settings).done(function (response) {
-      //console.log(response);
-      var results = response.businesses;
-      console.log(results);
-      results.forEach(function (result) {
+      console.log(response);
+      var result = response.businesses;
+      console.log(result);
+      for (let i = 0; i < 9; i++)  {
         // Creating a div to hold the hotel
         var hotelDiv = $("<div class='hotel'>");
   
         // Storing the name of the hotel
-        var name = result.name;
+        var name = result[i].name;
         console.log(name);
   
         // Storing the price of the hotel
-        var price = result.price;
+        var price = result[i].price;
         console.log(price);
   
         // Storing the URL of the hotel
-        var url = result.url;
+        var url = result[i].url;
         console.log(url)
   
         // Creating a p tag with info
         var p = $("<p>").text("Name: " + name);
+        var img = $('<img class="images" id ="image-'+ i + '">')
+        img.attr("src", result[i].image_url)
+         
+        hotelDiv.append(img)
   
         // Appending the p tag to the Hotel Div we created
         hotelDiv.append(name)
   
         // Append the hotelDiv to the "#yelp" div in the HTML
         $("#yelp").append(hotelDiv);
-      });
+      };
     });
 
     $("#yelp").html('<table class="table"><thead><tr><th scope="col">#</th><th scope="col">First</th><th scope="col">Last</th><th scope="col">Handle</th></tr></thead><tbody>')
@@ -111,10 +110,10 @@ $(document).ready(function () {
   
   function appendCheck() {
     var div = $("<div id=submit-btn>");
-    var checkbox = ['Hotel', 'Rental Car'];
+    var checkbox = ['Hotel', 'Rental Car', 'Destination'];
     
     for (var i = 0; i < checkbox.length; i++) {
-      div.append("&nbsp&nbsp" + "<input type='checkbox' checked='yes'>" + "</input>" + "&nbsp&nbsp&nbsp" + checkbox[i] + "&nbsp&nbsp&nbsp");
+      div.append("&nbsp&nbsp&nbsp" + "<input type='checkbox' checked='yes'>" + "</input>" + "&nbsp&nbsp" + checkbox[i] + "&nbsp&nbsp");
       // div.append(checkbox[i]);
     }
     $(".check").append(div);

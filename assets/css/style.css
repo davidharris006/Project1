@@ -110,6 +110,10 @@ div {
     -webkit-text-stroke-color: black;
 
 }
+.images {
+  height: 100px;
+  width: 100px;
+}
 
 #submit-btn:hover {
 
