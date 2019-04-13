@@ -1,14 +1,13 @@
+
 $(document).ready(function () {
 
-  var queryURL = "https://weather-ydn-yql.media.yahoo.com/forecastrss"
-  // var queryURL = "http://partners.api.skyscanner.net/apiservices/pricing/v1.0/"
-  var countryURL = "http://api.travelpayouts.com/v1/prices/cheap?"
+
 
 
   // var queryURL = "https://weather-ydn-yql.media.yahoo.com/forecastrss"
   // var queryURL = "http://partners.api.skyscanner.net/apiservices/pricing/v1.0/"
   function createAirlinedata(somearr) {
-    var box = $('<div>')
+    var box = $('<div>');
     for (let i = 0; i < 10; i++) {
       var data = $('<div>')
       data.text('Flight Price: ' + somearr.data[i].value)
@@ -22,14 +21,14 @@ $(document).ready(function () {
 
     let from = "";
     let destination = "";
-    let startTrip = "";
-    let endTrip = "";
+    let start = "";
+    let end = "";
 
     // Takes the user inputs from the specified IDs
     from = $("#from").val().trim();
     destination = $("#destination").val().trim();
-    startTrip = $("#startDate").val().trim();
-    endTrip = $("#endDate").val().trim();
+    start = moment($("#startDate").val().trim())
+    end  = moment($("#endDate").val().trim());
 
     $("#from").val("");
     $("#destination").val("");
@@ -49,6 +48,7 @@ $(document).ready(function () {
       method: "GET"
     }).then(function (response) {
       console.log(response)
+      createAirlinedata(response)
     })
     $.ajax({
       url: `http://api.travelpayouts.com/v2/prices/month-matrix?currency=usd&origin=LED&destination=HKT&month=${end.format("YYYY-MM-DD")}&show_to_affiliates=true&token=0ec4333c4c239dc2eae21220f6504c30&trip_duration=02`,
@@ -61,7 +61,7 @@ $(document).ready(function () {
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": "https://api.yelp.com/v3/businesses/search?term=hotel&location=San%20Diego",
+      "url": `https://api.yelp.com/v3/businesses/search?term=hotel&location=${destination}`,
       "method": "GET",
       "headers": {
         "Authorization": "Bearer 8PjqRtWKJIqnBZiMXVyB_Vj0DSnztb_o9Nrn-vYpgAjiDiTmtoUn94UwnrLNfBYKa64OCp9zHcSsHaNfGOO2AaFqYuGjtmz2iJjgcNQ2Zo4UExt_foAbVBEfxAWwXHYx",
@@ -74,63 +74,55 @@ $(document).ready(function () {
       //console.log(response);
       var results = response.businesses;
       console.log(results);
+      results.forEach(function (result) {
+        // Creating a div to hold the hotel
+        var hotelDiv = $("<div class='hotel'>");
+  
+        // Storing the name of the hotel
+        var name = result.name;
+        console.log(name);
+  
+        // Storing the price of the hotel
+        var price = result.price;
+        console.log(price);
+  
+        // Storing the URL of the hotel
+        var url = result.url;
+        console.log(url)
+  
+        // Creating a p tag with info
+        var p = $("<p>").text("Name: " + name);
+  
+        // Appending the p tag to the Hotel Div we created
+        hotelDiv.append(name)
+  
+        // Append the hotelDiv to the "#yelp" div in the HTML
+        $("#yelp").append(hotelDiv);
+      });
     });
 
     $("#yelp").html('<table class="table"><thead><tr><th scope="col">#</th><th scope="col">First</th><th scope="col">Last</th><th scope="col">Handle</th></tr></thead><tbody>')
 
 
-    results.forEach(function (result) {
-      // Creating a div to hold the hotel
-      var hotelDiv = $("<div class='hotel'>");
-
-      // Storing the name of the hotel
-      var name = result.name;
-      console.log(name);
-
-      // Storing the price of the hotel
-      var price = result.price;
-      console.log(price);
-
-      // Storing the URL of the hotel
-      var url = result.url;
-      console.log(url)
-
-      // Creating a p tag with info
-      var p = $("<p>").text("Name: " + name);
-
-      // Appending the p tag to the Hotel Div we created
-      hotelDiv.append(name)
-
-      // Append the hotelDiv to the "#yelp" div in the HTML
-      $("#yelp").append(hotelDiv);
-    });
   });
-  console.log(from, destination, startTrip, endTrip);
+ 
 
-  var countChecked = function () {
-    var n = $("input:checked").length;
-    console.log(n);
-  };
-  countChecked();
 
-  $("input[type=checkbox]").on("click", countChecked);
-
-  return false;
-
-})
-
-var checkbox = ['Hotel', 'Rental Car', 'Destination'];
-
-function appendCheck() {
-  var div = $("<div id=submit-btn>");
-
-  for (var i = 0; i < checkbox.length; i++) {
-    div.append("<input type='checkbox'" + ">" + "</input>" + "&nbsp&nbsp" + checkbox[i] + "<br><br>");
-    // div.append(checkbox[i]);
+  
+  function appendCheck() {
+    var div = $("<div id=submit-btn>");
+    var checkbox = ['Hotel', 'Rental Car'];
+    
+    for (var i = 0; i < checkbox.length; i++) {
+      div.append("&nbsp&nbsp" + "<input type='checkbox' checked='yes'>" + "</input>" + "&nbsp&nbsp&nbsp" + checkbox[i] + "&nbsp&nbsp&nbsp");
+      // div.append(checkbox[i]);
+    }
+    $(".check").append(div);
   }
-  $(".check").append(div);
-}
-
-appendCheck();
+  appendCheck();
+  
+  
+  
 
 });
+
