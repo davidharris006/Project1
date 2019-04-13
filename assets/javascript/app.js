@@ -1,12 +1,23 @@
 
 $(document).ready(function () {
-
+  
   function createAirlinedata(somearr) {
-    var box = $('<div>');
+    
     for (let i = 0; i < 10; i++) {
-      var data = $('<div>')
-      data.text('Flight Price: ' + somearr.data[i].value)
-      console.log(somearr.data[i].value)
+      var wordedclass ="";
+      var tripclass= somearr.data[i].trip_class;
+      var tr = $('<tr>')
+      if (tripclass === 0 ){
+        wordedclass = "Economy"
+      }
+      else if (tripclass === 1) {
+        wordedclass = "Coach"
+      }
+      tr.html('<td>' + somearr.data[i].value + '' + '</td>' + '<td>' + somearr.data[i].depart_date + '' + '</td>'+ '<td>' + wordedclass + '' + '</td>')
+      
+      
+
+      $('#bodytable').append(tr)
 
     }
   }
@@ -92,7 +103,7 @@ $(document).ready(function () {
          
         
         // Appending the p tag to the Hotel Div we created
-        hotelDiv.text(name + 'Price Range: ' + price + 'Contact: Phone-'+ result.phone)
+        hotelDiv.text(name  + 'Price Range: ' + price + 'Contact: Phone Number '+ result[i].phone)
         hotelDiv.prepend(img)
   
         // Append the hotelDiv to the "#yelp" div in the HTML
@@ -100,8 +111,7 @@ $(document).ready(function () {
       };
     });
 
-    $("#yelp").html('<table class="table"><thead><tr><th scope="col">#</th><th scope="col">First</th><th scope="col">Last</th><th scope="col">Handle</th></tr></thead><tbody>')
-
+    
 
   });
  
