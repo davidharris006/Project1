@@ -1,11 +1,8 @@
+
 $(document).ready(function () {
 
-
-
-
-
   function createAirlinedata(somearr) {
-    var box = $('<div>')
+    var box = $('<div>');
     for (let i = 0; i < 10; i++) {
       var data = $('<div>')
       data.text('Flight Price: ' + somearr.data[i].value)
@@ -116,7 +113,7 @@ $(document).ready(function () {
     var checkbox = ['Hotel', 'Rental Car', 'Destination'];
     
     for (var i = 0; i < checkbox.length; i++) {
-      div.append("<input type='checkbox' checked='yes'>" + "</input>" + "&nbsp&nbsp" + checkbox[i] + "<br><br>");
+      div.append("&nbsp&nbsp&nbsp" + "<input type='checkbox' checked='yes'>" + "</input>" + "&nbsp&nbsp" + checkbox[i] + "&nbsp&nbsp");
       // div.append(checkbox[i]);
     }
     $(".check").append(div);
@@ -127,3 +124,4 @@ $(document).ready(function () {
   
 
 });
+
