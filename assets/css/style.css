@@ -115,6 +115,16 @@ div {
   width: 100px;
 }
 
+.flexdisplay {
+  display: flex;
+  width: 80vw;
+  height: 400px;
+  overflow: auto;
+  flex-direction: column;
+  justify-content: flex-start;
+
+}
+
 #submit-btn:hover {
 
     color: yellow;
