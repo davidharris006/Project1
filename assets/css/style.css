@@ -18,29 +18,92 @@ div {
     color: black;
     text-align: center;
     height: auto;
-    text-shadow: 2px 2px 4px #000;
+    text-shadow: 4px 4px 8px #000;
 }
 
 .form-row {
-   background-color: lightblue; 
+   /* background-color: lightblue;  */
+   background: url("../../images/palm-tree-inv.jpg");
    text-align: center;
    font-size: 16px;
    border-color: black;
-    border-width: 3px;
+    border-width: 1px;
     border-color: black;
     border-style: solid;
+    border-radius: 11px;
 }
+
+.form-control {
+    border-color: black;
+    border-width: 1px;
+    border-color: black;
+    border-style: ridge;
+    box-sizing: border-box;
+}
+
+
+#check input {
+    position: absolute;
+    cursor: pointer;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 50px;
+    width: 25px;
+    background-color: red;
+  }
+  
+  /* On mouse-over, add a grey background color */
+ #check:hover input ~ .checkmark {
+    background-color: red;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+#check input:checked ~ .checkmark {
+    background-color: yellow;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
 
 #submit-btn {
     cursor: pointer;
     font-size: 25px;
-    color: lightblue;
+    color: white;
     /* background-color:yellow; */
     background: url("../../images/palm-tree.jpg");
+    background-size: 100%;
+    height: auto;
     font-weight: bolder;
     border-color: black;
-    border-width: 3px;
-    padding: 7px;
+    border-width: 7px;
+    padding: 11px;
     border-radius: 11px;
     font-style: inherit;
     text-align: center;
@@ -50,7 +113,8 @@ div {
 }
 
 #submit-btn:hover {
-    background-color: red;
+
+    color: yellow;
     
 }
 
@@ -60,22 +124,20 @@ div {
     transform: translateY(4px);
   }
 
-header {
+.container {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-style: oblique;
     font-size: 32px;
-    padding: 12px;
+    color: red;
     font-weight: bolder;
-    background-color: red;
     
 }
 
 html, body {
     text-align: center;
     font-size: 18 px;
-    color: black;
+    color: red;
     padding: 2px;
-    background-image: url("../../images/travel.jpg");
+    background-image: url("../../images/hammock.jpg");
     background-size: 100%;
     min-width: 100%;
     min-height: 100%;
