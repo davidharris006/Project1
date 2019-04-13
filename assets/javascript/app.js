@@ -91,6 +91,7 @@ $(document).ready(function () {
   
         // Creating a p tag with info
         var p = $("<p>").text("Name: " + name);
+        
   
         // Appending the p tag to the Hotel Div we created
         hotelDiv.append(name)
