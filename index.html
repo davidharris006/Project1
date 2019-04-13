@@ -17,25 +17,33 @@
 </head>
 
 <body>
-  <div class="jumbotron jumbotron-fluid rounded">
-    <div class="container">
-      Travel
-      <p>&nbsp;</p>
-    </div>
-  </div>
-
+  <!-- <div class="row"> -->
+    <!-- <div class="col-lg-12"> -->
+      <div class="jumbotron rounded w-75">
+        <div class="container">
+          <h1 class="display-4">Travel</h1>
+          <!-- <p>&nbsp;</p> -->
+        </div>
+      </div>
+    <!-- </div> -->
+  <!-- </div> -->
+    
   <div class="row">
     <div class="col-lg-1"></div>
     <div class="col-lg-10">
       <form>
         <div class="form-row">
           <div class="col-md-3">
-            <label for="inputFrom">From</label>
-            <input type="text" class="form-control" id="from" placeholder="From">
+            <label for="inputFrom">From (Airport)</label>
+            <input type="text" class="form-control" id="from" placeholder="Airport Code (LAX)">
           </div>
           <div class="col-md-3">
-            <label for="inputDestination">Destination</label>
-            <input type="text" class="form-control" id="destination" placeholder="Destination"><br>
+            <label for="inputDestination">To (Airport)</label>
+            <input type="text" class="form-control" id="destination" placeholder="Airport Code (JFK)"><br>
+          </div>
+          <div class="col-md-3">
+            <label for="inputDestinationCity">Destination</label>
+            <input type="text" class="form-control" id="destinationCity" placeholder="City (New York City)"><br>
           </div>
           <div class="col-md-3">
             <label for="inputStartDate">Start Date</label>
