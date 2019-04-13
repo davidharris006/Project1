@@ -100,7 +100,7 @@ $(document).ready(function () {
       console.log(result);
       for (let i = 0; i < 9; i++)  {
         // Creating a div to hold the hotel
-        var hotelDiv = $("<div class='hotel'>");
+        var hotelDiv = $("<div class='hotel row'>");
   
         // Storing the name of the hotel
         var name = result[i].name;
@@ -121,7 +121,8 @@ $(document).ready(function () {
          
         
         // Appending the p tag to the Hotel Div we created
-        hotelDiv.text(name  + 'Price Range: ' + price + 'Contact: Phone Number '+ result[i].phone)
+        $("#yelp").prepend(img)
+        hotelDiv.html(name  + '<br> Price Range: ' + price + '<br>Phone Number: '+ result[i].phone + '</div>')
         hotelDiv.prepend(img)
   
         // Append the hotelDiv to the "#yelp" div in the HTML
