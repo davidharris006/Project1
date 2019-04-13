@@ -13,7 +13,7 @@ $(document).ready(function () {
         $("<td>").text("Flight Class"),
       );
 
-      $('#thead').append(newRow)
+      $('#bodytable').append(newRow)
     }
 
     firstRow();
