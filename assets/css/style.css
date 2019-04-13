@@ -142,7 +142,6 @@ div {
     font-size: 32px;
     color: red;
     font-weight: bolder;
-    
 }
 
 html, body {
@@ -206,3 +205,4 @@ footer {
     .wrapper {
         width: 600px;
     }
+  }
