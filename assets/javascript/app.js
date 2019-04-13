@@ -1,8 +1,6 @@
 $(document).ready(function () {
 
-  var queryURL = "https://weather-ydn-yql.media.yahoo.com/forecastrss"
-  // var queryURL = "http://partners.api.skyscanner.net/apiservices/pricing/v1.0/"
-  var countryURL = "http://api.travelpayouts.com/v1/prices/cheap?"
+
 
 
   // var queryURL = "https://weather-ydn-yql.media.yahoo.com/forecastrss"
@@ -22,14 +20,14 @@ $(document).ready(function () {
 
     let from = "";
     let destination = "";
-    let startTrip = "";
-    let endTrip = "";
+    let start = "";
+    let end = "";
 
     // Takes the user inputs from the specified IDs
     from = $("#from").val().trim();
     destination = $("#destination").val().trim();
-    startTrip = $("#startDate").val().trim();
-    endTrip = $("#endDate").val().trim();
+    start = moment($("#startDate").val().trim())
+    end  = moment($("#endDate").val().trim());
 
     $("#from").val("");
     $("#destination").val("");
@@ -61,7 +59,7 @@ $(document).ready(function () {
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": "https://api.yelp.com/v3/businesses/search?term=hotel&location=San%20Diego",
+      "url": `https://api.yelp.com/v3/businesses/search?term=hotel&location=${destination}`,
       "method": "GET",
       "headers": {
         "Authorization": "Bearer 8PjqRtWKJIqnBZiMXVyB_Vj0DSnztb_o9Nrn-vYpgAjiDiTmtoUn94UwnrLNfBYKa64OCp9zHcSsHaNfGOO2AaFqYuGjtmz2iJjgcNQ2Zo4UExt_foAbVBEfxAWwXHYx",
@@ -105,32 +103,23 @@ $(document).ready(function () {
       $("#yelp").append(hotelDiv);
     });
   });
-  console.log(from, destination, startTrip, endTrip);
+ 
 
-  var countChecked = function () {
-    var n = $("input:checked").length;
-    console.log(n);
-  };
-  countChecked();
 
-  $("input[type=checkbox]").on("click", countChecked);
-
-  return false;
-
-})
-
-var checkbox = ['Hotel', 'Rental Car', 'Destination'];
-
-function appendCheck() {
-  var div = $("<div id=submit-btn>");
-
-  for (var i = 0; i < checkbox.length; i++) {
-    div.append("<input type='checkbox'" + ">" + "</input>" + "&nbsp&nbsp" + checkbox[i] + "<br><br>");
-    // div.append(checkbox[i]);
+  
+  function appendCheck() {
+    var div = $("<div id=submit-btn>");
+    var checkbox = ['Hotel', 'Rental Car', 'Destination'];
+    
+    for (var i = 0; i < checkbox.length; i++) {
+      div.append("<input type='checkbox' checked='yes'>" + "</input>" + "&nbsp&nbsp" + checkbox[i] + "<br><br>");
+      // div.append(checkbox[i]);
+    }
+    $(".check").append(div);
   }
-  $(".check").append(div);
-}
-
-appendCheck();
+  appendCheck();
+  
+  
+  
 
 });
