@@ -1,7 +1,35 @@
 
 $(document).ready(function () {
 
+  function ticketmasterdata (somearr) {
+    var result = somearr._embedded.events
 
+    function createtable (){
+      var table =$('<table class="table table-borderless">')
+      var row = $("<tr>")
+      row.html('<td>"Event Name"</td><td>Start Time & Date</td><td>Venue</td><td>Event Type/Genre</td>')
+      table.append(row)
+      $('#ticketmaster').append(table)
+    }
+    createtable
+      console.log(result)
+      for (let i = 0; i < 10; i++) {
+        var nameevent = result[i].name
+        var startdate = moment(result[i].dates.start.localDate).format("MM-DD-YYYY")
+        var starttime = moment(result[i].dates.start.localTime, "HH:mm").format("hh:mm a")
+        var type = result[i].classifications[0].segment.name
+        var genre = result[i].classifications[0].genre.name
+        var venue = result[i]._embedded.venues[0].name
+        var img = $('<img class="images">')
+        img.attr('src', result[i].images[0].url)
+       console.log(venue)
+       var tr = $('<tr>')
+       tr.html('<td>' + nameevent + '' + '</td>' + '<td>' + startdate + '/' + starttime + '' + '</td>' + '<td>' + venue + '' + '</td>' + '<td>' + type + '/' + genre + '' + '</td>')
+       tr.prepend(img)
+      $('#ticketmaster').append(tr)
+
+      }
+  }
 
   function createAirlinedata(somearr) {
 
@@ -42,6 +70,9 @@ $(document).ready(function () {
   $('#submit-btn').on('click', function (event) {
     event.preventDefault();
 
+    $('#airline').empty()
+    $('#yelp').empty()
+    $('#ticketmaster').empty()
     let from = "";
     let destination = "";
     let start = "";
@@ -53,10 +84,7 @@ $(document).ready(function () {
     start = moment($("#startDate").val().trim())
     end = moment($("#endDate").val().trim());
 
-    $("#from").val("");
-    $("#destination").val("");
-    $("#startDate").val("");
-    $("#endDate").val("");
+    
 
     $.ajaxPrefilter(function (options) {
       if (options.crossDomain && $.support.cors) {
@@ -153,33 +181,20 @@ $(document).ready(function () {
 
 
     // Ticketmaster API City 
-    var settings2 = {
+    var settings = {
       "async": true,
       "crossDomain": true,
-      "url": `https://app.ticketmaster.com/discovery/v2/events?apikey=pmgv5WgmN8XawGTxvYH4j912nx7ijBIw&city=${destination}`,
+      "url": `https://app.ticketmaster.com/discovery/v2/events?apikey=pmgv5WgmN8XawGTxvYH4j912nx7ijBIw&city=${destination}&localStartDate=${start}&localEndDate=${end}`,
       "method": "GET",
       "headers": {
         "cache-control": "no-cache",
-        "Postman-Token": "4b38ec0b-6284-410d-9c70-40cc6e4a8819"
+        "Postman-Token": "7fc3d51f-16dd-494c-b5dd-60edb9a55979"
       }
     }
     
-    $.ajax(settings2).done(function (response) {
+    $.ajax(settings).done(function (response) {
       console.log(response);
-      var result = response._embedded.events
-      console.log(result)
-      for (let i = 0; i < 10; i++) {
-        var nameevent = result[i].name
-        var startdate = moment(result[i].dates.start.localDate).format("MM-DD-YYYY")
-        var starttime = moment(result[i].dates.start.localTime, "HH:mm").format("hh:mm")
-        var type = result[i].classifications[0].segment.name
-        var genre = result[i].classifications[0].genre.name
-        var venue = result[i]._embedded.venues[0].name
-
-
-        console.log(venue)
-
-      }
+      ticketmasterdata(response)
     });
 
   });
