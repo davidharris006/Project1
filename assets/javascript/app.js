@@ -117,10 +117,11 @@ $(document).ready(function () {
       console.log(response);
       var result = response.businesses;
       console.log(result);
+      
       for (let i = 0; i < 9; i++) {
         // Creating a div to hold the hotel
 
-        var hotelDiv = $("<div class='hotel row'>");
+        var hotelDiv = $("<div class='table table-borderless' id='yelp'>");
 
         // Storing the name of the hotel
         var name = result[i].name;
@@ -136,19 +137,30 @@ $(document).ready(function () {
 
         // Creating a p tag with info
         var p = $("<p>").text("Name: " + name);
-        var img = $('<img class="images" id ="image-' + i + '">')
+        var img = $('<img class="images" style="width:200px;height:200px;" id ="image-' + i + '">')
         img.attr("src", result[i].image_url)
 
 
         // Appending the p tag to the Hotel Div we created
 
-        hotelDiv.text(name + 'Price Range: ' + price + 'Contact: Phone Number ' + result[i].phone)
+        hotelDiv.append("<br>" + name + "<br>" + 'Price Range: ' + price + "<br>" + 'Phone Number: ' + result[i].phone + "<br>")
 
         hotelDiv.prepend(img)
 
         // Append the hotelDiv to the "#yelp" div in the HTML
         $("#yelp").append(hotelDiv);
       };
+
+      // Extracts and displays Weather Report
+      function weather() {
+        var weather = $("<tr>").append(
+          $("<td>").append('<img src="./images/weather2.jpg" style="width:200px;height:200px;">')
+        );
+        $('#weather').append(weather)
+      }
+      weather();
+  
+
     });
 
 
