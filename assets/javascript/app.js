@@ -64,10 +64,12 @@ $(document).ready(function () {
       }
     });
 
+
+    // Yelp POI API
     var settings1 = {
       "async": true,
       "crossDomain": true,
-      "url": `https://api.yelp.com/v3/businesses/search?term=points%20of%20interest&location=${destinationcity}`,
+      "url": `https://api.yelp.com/v3/businesses/search?term=points%20of%20interest&location=${destination}`,
       "method": "GET",
       "headers": {
         "Authorization": "Bearer 8PjqRtWKJIqnBZiMXVyB_Vj0DSnztb_o9Nrn-vYpgAjiDiTmtoUn94UwnrLNfBYKa64OCp9zHcSsHaNfGOO2AaFqYuGjtmz2iJjgcNQ2Zo4UExt_foAbVBEfxAWwXHYx",
@@ -82,8 +84,10 @@ $(document).ready(function () {
 
     // url: `${countryURL}origin=SAN&destination=SFO&depart_date=${start.format("YYYY-MM")}&return_date=2019-09&token=0ec4333c4c239dc2eae21220f6504c30&currency=USD`,
 
+
+    // Flight API
     $.ajax({
-      url: `http://api.travelpayouts.com/v2/prices/month-matrix?currency=usd&origin=${from}&destination=${destination}&month=${start.format("YYYY-MM-DD")}&show_to_affiliates=true&token=0ec4333c4c239dc2eae21220f6504c30` ,
+      url: `http://api.travelpayouts.com/v2/prices/month-matrix?currency=usd&origin=LAX&destination=JFK&month=${start.format("YYYY-MM-DD")}&show_to_affiliates=true&token=0ec4333c4c239dc2eae21220f6504c30` ,
       method: "GET"
     }).then(function (response) {
       console.log(response)
@@ -96,7 +100,7 @@ $(document).ready(function () {
       console.log(response)
     })
 
-    // Yelp API
+    // Yelp hotel API
     var settings = {
       "async": true,
       "crossDomain": true,
@@ -148,6 +152,35 @@ $(document).ready(function () {
     });
 
 
+    // Ticketmaster API City 
+    var settings2 = {
+      "async": true,
+      "crossDomain": true,
+      "url": `https://app.ticketmaster.com/discovery/v2/events?apikey=pmgv5WgmN8XawGTxvYH4j912nx7ijBIw&city=${destination}`,
+      "method": "GET",
+      "headers": {
+        "cache-control": "no-cache",
+        "Postman-Token": "4b38ec0b-6284-410d-9c70-40cc6e4a8819"
+      }
+    }
+    
+    $.ajax(settings2).done(function (response) {
+      console.log(response);
+      var result = response._embedded.events
+      console.log(result)
+      for (let i = 0; i < 10; i++) {
+        var nameevent = result[i].name
+        var startdate = moment(result[i].dates.start.localDate).format("MM-DD-YYYY")
+        var starttime = moment(result[i].dates.start.localTime, "HH:mm").format("hh:mm")
+        var type = result[i].classifications[0].segment.name
+        var genre = result[i].classifications[0].genre.name
+        var venue = result[i]._embedded.venues[0].name
+
+
+        console.log(venue)
+
+      }
+    });
 
   });
 
