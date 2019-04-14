@@ -1,15 +1,40 @@
-#bodytable tr:nth-child(even){background-color:white;}
-#bodytable tr:nth-child(odd){background-color: limegreen}
+
+
+#bodytable tr:nth-child(even){
+  background-color:white;
+  padding: 3px;
+}
+#bodytable tr:nth-child(odd){
+  background-color: limegreen;
+}
 
   table, td, th,  tr {
     border-collapse: separate;
-    border-color: black;
-    border-width: 3px;
-    border-style: solid;
     font-size: 14px;
     text-align: center;
-    padding: 10px 0;
+    padding: 5px;
   }
+
+#yelp {
+  font-size: 22px;
+  text-align: center;
+  padding: 5px;
+}
+
+
+#yelp:nth-child(odd) {
+  background: -webkit-linear-gradient(-45deg, rgba(183,222,237,1) 0%, rgba(113,206,239,1) 42%, rgba(33,180,226,1) 51%, rgba(183,222,237,1) 100%);
+}
+
+#yelp:nth-child(even) {
+  background: -webkit-linear-gradient(-45deg, rgba(248,80,50,1) 0%, rgba(241,111,92,1) 23%, rgba(246,41,12,1) 51%, rgba(240,47,23,1) 71%, rgba(231,56,39,1) 100%);
+}
+
+#yelp:hover {
+  background-color: #FF00CC;
+  cursor: pointer;
+}
+
 
 div {
     display: inline-block;
@@ -20,6 +45,7 @@ div {
     height: auto;
     /* text-shadow: 4px 4px 8px #000; */
 }
+
 
 .form-row {
    background: url("../../images/palm-tree-inv.jpg");
