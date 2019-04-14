@@ -1,34 +1,34 @@
 
 $(document).ready(function () {
 
-  function ticketmasterdata (somearr) {
+  function ticketmasterdata(somearr) {
     var result = somearr._embedded.events
 
-    function createtable (){
-      var table =$('<table class="table table-borderless">')
+    function createtable() {
+      var table = $('<table class="table table-borderless">')
       var row = $("<tr>")
       row.html('<td>"Event Name"</td><td>Start Time & Date</td><td>Venue</td><td>Event Type/Genre</td>')
       table.append(row)
       $('#ticketmaster').append(table)
     }
     createtable
-      console.log(result)
-      for (let i = 0; i < 10; i++) {
-        var nameevent = result[i].name
-        var startdate = moment(result[i].dates.start.localDate).format("MM-DD-YYYY")
-        var starttime = moment(result[i].dates.start.localTime, "HH:mm").format("hh:mm a")
-        var type = result[i].classifications[0].segment.name
-        var genre = result[i].classifications[0].genre.name
-        var venue = result[i]._embedded.venues[0].name
-        var img = $('<img class="images">')
-        img.attr('src', result[i].images[0].url)
-       console.log(venue)
-       var tr = $('<tr>')
-       tr.html('<td>' + nameevent + '' + '</td>' + '<td>' + startdate + '/' + starttime + '' + '</td>' + '<td>' + venue + '' + '</td>' + '<td>' + type + '/' + genre + '' + '</td>')
-       tr.prepend(img)
+    console.log(result)
+    for (let i = 0; i < 10; i++) {
+      var nameevent = result[i].name
+      var startdate = moment(result[i].dates.start.localDate).format("MM-DD-YYYY")
+      var starttime = moment(result[i].dates.start.localTime, "HH:mm").format("hh:mm a")
+      var type = result[i].classifications[0].segment.name
+      var genre = result[i].classifications[0].genre.name
+      var venue = result[i]._embedded.venues[0].name
+      var img = $('<img class="images">')
+      img.attr('src', result[i].images[0].url)
+      console.log(venue)
+      var tr = $('<tr>')
+      tr.html('<td>' + nameevent + '' + '</td>' + '<td>' + startdate + '/' + starttime + '' + '</td>' + '<td>' + venue + '' + '</td>' + '<td>' + type + '/' + genre + '' + '</td>')
+      tr.prepend(img)
       $('#ticketmaster').append(tr)
 
-      }
+    }
   }
 
   function createAirlinedata(somearr) {
@@ -81,10 +81,15 @@ $(document).ready(function () {
     // Takes the user inputs from the specified IDs
     from = $("#from").val().trim();
     destination = $("#destination").val().trim();
-    start = moment($("#startDate").val().trim())
+    start = moment($("#startDate").val().trim());
     end = moment($("#endDate").val().trim());
 
-    
+    console.log(end);
+
+    $("#from").val("");
+    $("#destination").val("");
+    $("#startDate").val("");
+    $("#endDate").val("");
 
     $.ajaxPrefilter(function (options) {
       if (options.crossDomain && $.support.cors) {
@@ -115,7 +120,7 @@ $(document).ready(function () {
 
     // Flight API
     $.ajax({
-      url: `http://api.travelpayouts.com/v2/prices/month-matrix?currency=usd&origin=LAX&destination=JFK&month=${start.format("YYYY-MM-DD")}&show_to_affiliates=true&token=0ec4333c4c239dc2eae21220f6504c30` ,
+      url: `http://api.travelpayouts.com/v2/prices/month-matrix?currency=usd&origin=LAX&destination=JFK&month=${start.format("YYYY-MM-DD")}&show_to_affiliates=true&token=0ec4333c4c239dc2eae21220f6504c30`,
       method: "GET"
     }).then(function (response) {
       console.log(response)
@@ -145,7 +150,7 @@ $(document).ready(function () {
       console.log(response);
       var result = response.businesses;
       console.log(result);
-      
+
       for (let i = 0; i < 9; i++) {
         // Creating a div to hold the hotel
 
@@ -187,13 +192,13 @@ $(document).ready(function () {
         $('#weather').append(weather)
       }
       weather();
-  
+
 
     });
 
 
     // Ticketmaster API City 
-    var settings = {
+    var settings2 = {
       "async": true,
       "crossDomain": true,
       "url": `https://app.ticketmaster.com/discovery/v2/events?apikey=pmgv5WgmN8XawGTxvYH4j912nx7ijBIw&city=${destination}`,
@@ -203,12 +208,37 @@ $(document).ready(function () {
         "Postman-Token": "7fc3d51f-16dd-494c-b5dd-60edb9a55979"
       }
     }
-    
-    $.ajax(settings).done(function (response) {
-      console.log(response);
-      ticketmasterdata(response)
-    });
 
+    $.ajax(settings2).done(function (response) {
+      console.log(response);
+      var result = response._embedded.events;
+      console.log(result);
+
+
+      // Heading for events
+      var newEvent = $("<br>" + '<img src="./images/events.gif" style="width:200px;height:200px;">' + "<br><br>");
+
+      $('#ticket-master').append(newEvent);
+
+      // Extracts event info from Ticket Master
+
+      for (let i = 0; i < 10; i++) {
+
+        var nameevent = result[i].name
+        var startdate = moment(result[i].dates.start.localDate).format("MM-DD-YYYY")
+        var starttime = moment(result[i].dates.start.localTime, "HH:mm").format("hh:mm")
+        var type = result[i].classifications[0].segment.name
+        var genre = result[i].classifications[0].genre.name
+        var venue = result[i]._embedded.venues[0].name
+
+        var tickets = $("<div id='ticket-master'>");
+
+        tickets.append(nameevent + "<br>" + venue + "<br>" + startdate + "&nbsp&nbsp&nbsp" + starttime
+          + "<br>" + "Event Type: " + type + "&nbsp&nbsp&nbsp" + "Genre: " + genre + "<br>");
+
+        $('#ticket-master').append(tickets);
+      }
+    });
   });
 
 
@@ -225,9 +255,6 @@ $(document).ready(function () {
     $(".check").append(div);
   }
   appendCheck();
-
-
-
 
 });
 

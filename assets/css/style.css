@@ -19,6 +19,7 @@
   font-size: 22px;
   text-align: center;
   padding: 5px;
+  border-collapse: separate;
 }
 
 
@@ -31,10 +32,31 @@
 }
 
 #yelp:hover {
-  background-color: #FF00CC;
   cursor: pointer;
 }
 
+#ticket-master {
+  font-size: 22px;
+  text-align: center;
+  padding: 5px;
+  background-image: url("../../images/palm-tree-inv.jpg");
+}
+
+
+#ticket-master:nth-child(odd) {
+  background: linear-gradient(red, yellow); 
+  padding: 5px;
+}
+
+#ticket-master:nth-child(even) {
+  background: linear-gradient(blue, lime);
+  padding: 5px;
+}
+
+#ticket-master:hover {
+  background-color: purple;
+  cursor: pointer;
+}
 
 div {
     display: inline-block;
@@ -43,6 +65,7 @@ div {
     color: black;
     text-align: center;
     height: auto;
+    
     /* text-shadow: 4px 4px 8px #000; */
 }
 
