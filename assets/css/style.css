@@ -1,5 +1,5 @@
-#fromDatabase tr:nth-child(even){background-color: yellow;}
-#fromDatabase tr:nth-child(odd){background-color: lime;}
+#bodytable tr:nth-child(even){background-color:white;}
+#bodytable tr:nth-child(odd){background-color: limegreen}
 
   table, td, th,  tr {
     border-collapse: separate;
