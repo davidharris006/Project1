@@ -50,8 +50,10 @@ $(document).ready(function () {
     // Takes the user inputs from the specified IDs
     from = $("#from").val().trim();
     destination = $("#destination").val().trim();
-    start = moment($("#startDate").val().trim())
+    start = moment($("#startDate").val().trim());
     end = moment($("#endDate").val().trim());
+
+    console.log(start, end);
 
     $("#from").val("");
     $("#destination").val("");
@@ -87,7 +89,7 @@ $(document).ready(function () {
 
     // Flight API
     $.ajax({
-      url: `http://api.travelpayouts.com/v2/prices/month-matrix?currency=usd&origin=LAX&destination=JFK&month=${start.format("YYYY-MM-DD")}&show_to_affiliates=true&token=0ec4333c4c239dc2eae21220f6504c30` ,
+      url: `http://api.travelpayouts.com/v2/prices/month-matrix?currency=usd&origin=LAX&destination=JFK&month=${start.format("YYYY-MM-DD")}&show_to_affiliates=true&token=0ec4333c4c239dc2eae21220f6504c30`,
       method: "GET"
     }).then(function (response) {
       console.log(response)
@@ -117,7 +119,7 @@ $(document).ready(function () {
       console.log(response);
       var result = response.businesses;
       console.log(result);
-      
+
       for (let i = 0; i < 9; i++) {
         // Creating a div to hold the hotel
 
@@ -159,7 +161,7 @@ $(document).ready(function () {
         $('#weather').append(weather)
       }
       weather();
-  
+
 
     });
 
@@ -175,12 +177,21 @@ $(document).ready(function () {
         "Postman-Token": "4b38ec0b-6284-410d-9c70-40cc6e4a8819"
       }
     }
-    
+
     $.ajax(settings2).done(function (response) {
       console.log(response);
-      var result = response._embedded.events
-      console.log(result)
+      var result = response._embedded.events;
+      console.log(result);
+
+      // Heading for events
+      var newEvent = $("<br>" + '<img src="./images/events.gif" style="width:200px;height:200px;">' + "<br><br>");
+      
+      $('#ticket-master').append(newEvent);
+
+      // Extracts event info from Ticket Master
+
       for (let i = 0; i < 10; i++) {
+
         var nameevent = result[i].name
         var startdate = moment(result[i].dates.start.localDate).format("MM-DD-YYYY")
         var starttime = moment(result[i].dates.start.localTime, "HH:mm").format("hh:mm")
@@ -188,15 +199,17 @@ $(document).ready(function () {
         var genre = result[i].classifications[0].genre.name
         var venue = result[i]._embedded.venues[0].name
 
+        var tickets = $("<div id='ticket-master'>");
 
-        console.log(venue)
+        tickets.append(nameevent + "<br>" + venue + "<br>" + startdate + "&nbsp&nbsp&nbsp" + starttime
+          + "<br>" + "Event Type: " + type + "&nbsp&nbsp&nbsp" + "Genre: " + genre + "<br>");
 
+        $('#ticket-master').append(tickets);
       }
+
     });
 
   });
-
-
 
 
   function appendCheck() {
