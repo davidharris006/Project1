@@ -1,5 +1,34 @@
 $(document).ready(function () {
 
+  function yelppoidata(somearr) {
+    var result = somearr.businesses;
+    console.log(result)
+    for (let i = 0; i < 9; i++) {
+      var poiDiv = $("<div class='table table-borderless' id='yelppoitbl'>");
+
+      var name = result[i].name
+      var addressfirst = result[i].location.display_address[1]
+      var addresssecond = result[i].location.display_address[2]
+      var rating = result[i].rating
+     
+
+      
+      var img = $('<img class="images" style="width:200px;height:200px;" id ="image-' + i + '">')
+      poiDiv.append("<br>" + "Name: " + name + "<br>" + "Address: " + addressfirst+ addresssecond + "<br>" + "Rating: " + rating + "<br>" )
+      var checkmark = $('<input type="checkbox" id="checkbox-' + i + '">')
+      img.attr("src", result[i].image_url)
+
+      
+      poiDiv.prepend(img)
+      poiDiv.append(checkmark)
+      poiDiv.css('display', 'block')
+
+      $('#yelppoi').append(poiDiv);
+
+    }
+
+  }
+
   function yelpdata(somearr) {
   $('#yelp').css('display', 'block')
     var result = somearr.businesses;
@@ -30,7 +59,7 @@ $(document).ready(function () {
 
         // Appending the p tag to the Hotel Div we created
 
-        hotelDiv.append("<br>" + name + "<br>" + 'Price Range: ' + price + "<br>" + 'Phone Number: ' + result[i].phone + "<br>")
+        hotelDiv.append("<br> Name: " + name + "<br>" + 'Price Range: ' + price + "<br>" + 'Phone Number: ' + result[i].phone + "<br>")
 
         hotelDiv.prepend(img)
         hotelDiv.append(checkmark)
@@ -163,10 +192,11 @@ $(document).ready(function () {
     }
 
     $.ajax(settings1).done(function (response) {
+      console.log("this response");
       console.log(response);
+      yelppoidata(response)
     });
 
-    // url: `${countryURL}origin=SAN&destination=SFO&depart_date=${start.format("YYYY-MM")}&return_date=2019-09&token=0ec4333c4c239dc2eae21220f6504c30&currency=USD`,
 
 
     // Flight API
@@ -183,6 +213,9 @@ $(document).ready(function () {
     }).then(function (response) {
       console.log(response)
     })
+    
+    
+    // Ticketmaster API City 
     var settings2 = {
       "async": true,
       "crossDomain": true,
@@ -200,8 +233,8 @@ $(document).ready(function () {
     });
 
 
- if (hotels.checked) {
     // Yelp hotel API
+ if (hotels.checked) {
     var settings = {
       "async": true,
       "crossDomain": true,
@@ -221,7 +254,6 @@ $(document).ready(function () {
   }
 
 
-    // Ticketmaster API City 
   });
 
 
