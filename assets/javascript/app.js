@@ -150,6 +150,10 @@ $(document).ready(function () {
       var result = response.businesses;
       console.log(result);
 
+      var hotel = ['HOTELS'];
+
+      $("#yelp").append("<br>" + hotel + "<br><br>");
+
       for (let i = 0; i < 9; i++) {
         // Creating a div to hold the hotel
 
@@ -171,7 +175,6 @@ $(document).ready(function () {
         var p = $("<p>").text("Name: " + name);
         var img = $('<img class="images" style="width:200px;height:200px;" id ="image-' + i + '">')
         img.attr("src", result[i].image_url)
-
 
         // Appending the p tag to the Hotel Div we created
 
