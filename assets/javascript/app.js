@@ -1,5 +1,57 @@
 $(document).ready(function () {
 
+  function yelpdata(somearr) {
+  $('#yelp').css('display', 'block')
+    var result = somearr.businesses;
+      console.log(result);
+
+      for (let i = 0; i < 9; i++) {
+        // Creating a div to hold the hotel
+
+        var hotelDiv = $("<div class='table table-borderless' id='yelp'>");
+
+        // Storing the name of the hotel
+        var name = result[i].name;
+        console.log(name);
+
+        // Storing the price of the hotel
+        var price = result[i].price;
+        console.log(price);
+
+        // Storing the URL of the hotel
+        var url = result[i].url;
+        console.log(url)
+
+        // Creating a p tag with info
+        var p = $("<p>").text("Name: " + name);
+        var img = $('<img class="images" style="width:200px;height:200px;" id ="image-' + i + '">')
+        img.attr("src", result[i].image_url)
+        var checkmark = $('<input type="checkbox" id="checkbox-' + i + '">')
+
+        // Appending the p tag to the Hotel Div we created
+
+        hotelDiv.append("<br>" + name + "<br>" + 'Price Range: ' + price + "<br>" + 'Phone Number: ' + result[i].phone + "<br>")
+
+        hotelDiv.prepend(img)
+        hotelDiv.append(checkmark)
+        hotelDiv.css('display', 'block')
+        // Append the hotelDiv to the "#yelp" div in the HTML
+        $("#yelp").append(hotelDiv);
+      };
+
+      // Extracts and displays Weather Report
+      function weather() {
+        var weather = $("<tr>").append(
+          $("<td>").append('<img src="./images/weather2.jpg" style="width:200px;height:200px;">')
+        );
+        $('#weather').append(weather)
+      }
+      weather();
+
+
+  }
+
+
   function ticketmasterdata(somearr) {
     var result = somearr._embedded.events;
     console.log(result);
@@ -131,7 +183,24 @@ $(document).ready(function () {
     }).then(function (response) {
       console.log(response)
     })
+    var settings2 = {
+      "async": true,
+      "crossDomain": true,
+      "url": `https://app.ticketmaster.com/discovery/v2/events?apikey=pmgv5WgmN8XawGTxvYH4j912nx7ijBIw&city=${destination}&sort=date,asc&localStartDate`,
+      "method": "GET",
+      "headers": {
+        "cache-control": "no-cache",
+        "Postman-Token": "7fc3d51f-16dd-494c-b5dd-60edb9a55979"
+      }
+    }
+  
+    $.ajax(settings2).done(function (response) {
+      console.log(response);
+      ticketmasterdata(response);
+    });
 
+
+ if (hotels.checked) {
     // Yelp hotel API
     var settings = {
       "async": true,
@@ -147,90 +216,31 @@ $(document).ready(function () {
 
     $.ajax(settings).done(function (response) {
       console.log(response);
-      var result = response.businesses;
-      console.log(result);
-
-      for (let i = 0; i < 9; i++) {
-        // Creating a div to hold the hotel
-
-        var hotelDiv = $("<div class='table table-borderless' id='yelp'>");
-
-        // Storing the name of the hotel
-        var name = result[i].name;
-        console.log(name);
-
-        // Storing the price of the hotel
-        var price = result[i].price;
-        console.log(price);
-
-        // Storing the URL of the hotel
-        var url = result[i].url;
-        console.log(url)
-
-        // Creating a p tag with info
-        var p = $("<p>").text("Name: " + name);
-        var img = $('<img class="images" style="width:200px;height:200px;" id ="image-' + i + '">')
-        img.attr("src", result[i].image_url)
-
-
-        // Appending the p tag to the Hotel Div we created
-
-        hotelDiv.append("<br>" + name + "<br>" + 'Price Range: ' + price + "<br>" + 'Phone Number: ' + result[i].phone + "<br>")
-
-        hotelDiv.prepend(img)
-
-        // Append the hotelDiv to the "#yelp" div in the HTML
-        $("#yelp").append(hotelDiv);
-      };
-
-      // Extracts and displays Weather Report
-      function weather() {
-        var weather = $("<tr>").append(
-          $("<td>").append('<img src="./images/weather2.jpg" style="width:200px;height:200px;">')
-        );
-        $('#weather').append(weather)
-      }
-      weather();
-
-
+      yelpdata(response)
     });
+  }
 
 
     // Ticketmaster API City 
-    var settings2 = {
-      "async": true,
-      "crossDomain": true,
-      "url": `https://app.ticketmaster.com/discovery/v2/events?apikey=pmgv5WgmN8XawGTxvYH4j912nx7ijBIw&city=${destination}&sort=date,asc&localStartDate`,
-      "method": "GET",
-      "headers": {
-        "cache-control": "no-cache",
-        "Postman-Token": "7fc3d51f-16dd-494c-b5dd-60edb9a55979"
-      }
-    }
-
-    $.ajax(settings2).done(function (response) {
-      console.log(response);
-      ticketmasterdata(response);
-    });
   });
 
 
 
 // Dynamically creates checkboxes with gifs to the right
-  function appendCheck() {
-    var div = $("<div>");
-    var gifs = ["<img src=./images/hotel-gif.gif>", "<img src=./images/car.gif>"];
-    // var checkbox = ["<input type='checkbox' checked='yes'>"];
+  // function appendCheck() {
+  //   var div = $("<div>");
+  //   var gifs = ["<img src=./images/hotel-gif.gif>", "<img src=./images/car.gif>"];
+  //   // var checkbox = ["<input type='checkbox' checked='yes'>"];
 
 
-    for (var i = 0; i < gifs.length; i++) {
+  //   for (var i = 0; i < gifs.length; i++) {
       
-      div.append("&nbsp&nbsp&nbsp" + "<div id=submit-btn>"  + "<input type='checkbox' checked='yes'>" + "</input>"
-       + "&nbsp&nbsp" + gifs[i] + "&nbsp&nbsp&nbsp");
+  //     div.append("&nbsp&nbsp&nbsp" + "<div id=submit-btn>"  + "" + "</input>"
+  //      + "&nbsp&nbsp" + gifs[i] + "&nbsp&nbsp&nbsp");
       
-    }
-    $("#check").append(div);
-  }
-  appendCheck();
+  //   }
+  //   $("#check").append(div);
+  // }
+  // appendCheck();
 
 });

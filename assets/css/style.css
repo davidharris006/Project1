@@ -20,6 +20,10 @@
   text-align: center;
   padding: 5px;
   border-collapse: separate;
+  height: 400px;
+  overflow: auto;
+  align-self: center; 
+  display: none;
 }
 
 #yelp:nth-child(odd) {
@@ -84,6 +88,11 @@ div {
     border-color: black;
     border-style: ridge;
     box-sizing: border-box;
+}
+.checkboxes {
+  background-image: url("../../images/palm-tree.jpg");
+  height:150px;
+  border-radius: 15px;
 }
 
 #check input {
