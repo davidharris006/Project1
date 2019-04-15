@@ -22,7 +22,6 @@
   border-collapse: separate;
 }
 
-
 #yelp:nth-child(odd) {
   background: -webkit-linear-gradient(-45deg, rgba(183,222,237,1) 0%, rgba(113,206,239,1) 42%, rgba(33,180,226,1) 51%, rgba(183,222,237,1) 100%);
 }
@@ -39,9 +38,7 @@
   font-size: 22px;
   text-align: center;
   padding: 5px;
-  background-image: url("../../images/palm-tree-inv.jpg");
 }
-
 
 #ticket-master:nth-child(odd) {
   background: linear-gradient(red, yellow); 
@@ -54,8 +51,11 @@
 }
 
 #ticket-master:hover {
-  background-color: purple;
   cursor: pointer;
+}
+
+#ticket-row {
+  background-image: url("../../images/palm-tree-inv.jpg");
 }
 
 div {
@@ -65,10 +65,7 @@ div {
     color: black;
     text-align: center;
     height: auto;
-    
-    /* text-shadow: 4px 4px 8px #000; */
 }
-
 
 .form-row {
    background: url("../../images/palm-tree-inv.jpg");
@@ -89,62 +86,17 @@ div {
     box-sizing: border-box;
 }
 
-
 #check input {
-    position: absolute;
-    cursor: pointer;
-  }
-  
-  /* Create a custom checkbox */
-  .checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 50px;
-    width: 25px;
-    background-color: red;
-  }
-  
-  /* On mouse-over, add a grey background color */
- #check:hover input ~ .checkmark {
-    background-color: red;
-  }
-  
-  /* When the checkbox is checked, add a blue background */
-#check input:checked ~ .checkmark {
-    background-color: yellow;
-  }
-  
-  /* Create the checkmark/indicator (hidden when not checked) */
-  .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
-  
-  /* Show the checkmark when checked */
-  .container input:checked ~ .checkmark:after {
-    display: block;
-  }
-  
-  /* Style the checkmark/indicator */
-  .container .checkmark:after {
-    left: 9px;
-    top: 5px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
+  height: 35px;
+  width: 35px;
+  position: relative;
+  cursor: pointer;
+}
 
 #submit-btn {
     cursor: pointer;
     font-size: 25px;
     color: white;
-    /* background-color:yellow; */
     background: url("../../images/palm-tree.jpg");
     background-size: 100%;
     height: auto;
@@ -157,8 +109,8 @@ div {
     text-align: center;
     -webkit-text-stroke-width: 3px;
     -webkit-text-stroke-color: black;
-
 }
+
 .images {
   height: 100px;
   width: 100px;

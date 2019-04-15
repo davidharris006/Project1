@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
 
   function ticketmasterdata(somearr) {
@@ -26,9 +25,8 @@ $(document).ready(function () {
 
       tickets.append(nameevent + "<br>" + venue + "<br>" + startdate + "&nbsp&nbsp&nbsp" + starttime
         + "<br>" + "Event Type: " + type + "&nbsp&nbsp&nbsp" + "Genre: " + genre + "<br>");
-
+        
       $('#ticket-master').append(tickets);
-
     }
   }
 
@@ -213,24 +211,26 @@ $(document).ready(function () {
     $.ajax(settings2).done(function (response) {
       console.log(response);
       ticketmasterdata(response);
-      
     });
   });
 
 
 
-
+// Dynamically creates checkboxes with gifs to the right
   function appendCheck() {
     var div = $("<div>");
-    var checkbox = ["<img src=./images/hotel-gif.gif>", "<img src=./images/car.gif>"];
+    var gifs = ["<img src=./images/hotel-gif.gif>", "<img src=./images/car.gif>"];
+    // var checkbox = ["<input type='checkbox' checked='yes'>"];
 
-    for (var i = 0; i < checkbox.length; i++) {
-      div.append("&nbsp&nbsp&nbsp" + "<div id=submit-btn>" + "<input type='checkbox' checked='yes'>" + "</input>" + "&nbsp&nbsp" + checkbox[i] + "&nbsp&nbsp&nbsp");
-      // div.append(checkbox[i]);
+
+    for (var i = 0; i < gifs.length; i++) {
+      
+      div.append("&nbsp&nbsp&nbsp" + "<div id=submit-btn>"  + "<input type='checkbox' checked='yes'>" + "</input>"
+       + "&nbsp&nbsp" + gifs[i] + "&nbsp&nbsp&nbsp");
+      
     }
-    $(".check").append(div);
+    $("#check").append(div);
   }
   appendCheck();
 
 });
-
