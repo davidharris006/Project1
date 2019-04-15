@@ -1,33 +1,32 @@
-
 $(document).ready(function () {
 
   function ticketmasterdata(somearr) {
-    var result = somearr._embedded.events
+    var result = somearr._embedded.events;
+    console.log(result);
 
-    function createtable() {
-      var table = $('<table class="table table-borderless">')
-      var row = $("<tr>")
-      row.html('<td>"Event Name"</td><td>Start Time & Date</td><td>Venue</td><td>Event Type/Genre</td>')
-      table.append(row)
-      $('#ticketmaster').append(table)
-    }
-    createtable
-    console.log(result)
+
+    // Heading for events
+    var newEvent = $("<br>" + '<img src="./images/events.gif" style="width:200px;height:200px;">' + "<br><br>");
+
+    $('#ticket-master').append(newEvent);
+
+    // Extracts event info from Ticket Master
+
     for (let i = 0; i < 10; i++) {
+
       var nameevent = result[i].name
       var startdate = moment(result[i].dates.start.localDate).format("MM-DD-YYYY")
-      var starttime = moment(result[i].dates.start.localTime, "HH:mm").format("hh:mm a")
+      var starttime = moment(result[i].dates.start.localTime, "HH:mm").format("hh:mm")
       var type = result[i].classifications[0].segment.name
       var genre = result[i].classifications[0].genre.name
       var venue = result[i]._embedded.venues[0].name
-      var img = $('<img class="images">')
-      img.attr('src', result[i].images[0].url)
-      console.log(venue)
-      var tr = $('<tr>')
-      tr.html('<td>' + nameevent + '' + '</td>' + '<td>' + startdate + '/' + starttime + '' + '</td>' + '<td>' + venue + '' + '</td>' + '<td>' + type + '/' + genre + '' + '</td>')
-      tr.prepend(img)
-      $('#ticketmaster').append(tr)
 
+      var tickets = $("<div id='ticket-master'>");
+
+      tickets.append(nameevent + "<br>" + venue + "<br>" + startdate + "&nbsp&nbsp&nbsp" + starttime
+        + "<br>" + "Event Type: " + type + "&nbsp&nbsp&nbsp" + "Genre: " + genre + "<br>");
+        
+      $('#ticket-master').append(tickets);
     }
   }
 
@@ -201,7 +200,7 @@ $(document).ready(function () {
     var settings2 = {
       "async": true,
       "crossDomain": true,
-      "url": `https://app.ticketmaster.com/discovery/v2/events?apikey=pmgv5WgmN8XawGTxvYH4j912nx7ijBIw&city=${destination}`,
+      "url": `https://app.ticketmaster.com/discovery/v2/events?apikey=pmgv5WgmN8XawGTxvYH4j912nx7ijBIw&city=${destination}&sort=date,asc&localStartDate`,
       "method": "GET",
       "headers": {
         "cache-control": "no-cache",
@@ -211,50 +210,28 @@ $(document).ready(function () {
 
     $.ajax(settings2).done(function (response) {
       console.log(response);
-      var result = response._embedded.events;
-      console.log(result);
+      ticketmasterdata(response);
 
-
-      // Heading for events
-      var newEvent = $("<br>" + '<img src="./images/events.gif" style="width:200px;height:200px;">' + "<br><br>");
-
-      $('#ticket-master').append(newEvent);
-
-      // Extracts event info from Ticket Master
-
-      for (let i = 0; i < 10; i++) {
-
-        var nameevent = result[i].name
-        var startdate = moment(result[i].dates.start.localDate).format("MM-DD-YYYY")
-        var starttime = moment(result[i].dates.start.localTime, "HH:mm").format("hh:mm")
-        var type = result[i].classifications[0].segment.name
-        var genre = result[i].classifications[0].genre.name
-        var venue = result[i]._embedded.venues[0].name
-
-        var tickets = $("<div id='ticket-master'>");
-
-        tickets.append(nameevent + "<br>" + venue + "<br>" + startdate + "&nbsp&nbsp&nbsp" + starttime
-          + "<br>" + "Event Type: " + type + "&nbsp&nbsp&nbsp" + "Genre: " + genre + "<br>");
-
-        $('#ticket-master').append(tickets);
-      }
     });
   });
 
 
 
-
+// Dynamically creates checkboxes with gifs to the right
   function appendCheck() {
     var div = $("<div>");
-    var checkbox = ["<img src=./images/hotel-gif.gif>", "<img src=./images/car.gif>"];
+    var gifs = ["<img src=./images/hotel-gif.gif>", "<img src=./images/car.gif>"];
+    // var checkbox = ["<input type='checkbox' checked='yes'>"];
 
-    for (var i = 0; i < checkbox.length; i++) {
-      div.append("&nbsp&nbsp&nbsp" + "<div id=submit-btn>" + "<input type='checkbox' checked='yes'>" + "</input>" + "&nbsp&nbsp" + checkbox[i] + "&nbsp&nbsp&nbsp");
+
+    for (var i = 0; i < gifs.length; i++) {
+      
+      div.append("&nbsp&nbsp&nbsp" + "<div id=submit-btn>"  + "<input type='checkbox' checked='yes'>" + "</input>"
+       + "&nbsp&nbsp" + gifs[i] + "&nbsp&nbsp&nbsp");
       // div.append(checkbox[i]);
     }
-    $(".check").append(div);
+    $("#check").append(div);
   }
   appendCheck();
 
 });
-
