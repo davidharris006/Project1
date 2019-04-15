@@ -18,7 +18,12 @@
 #yelp {
   font-size: 22px;
   text-align: center;
-  padding: 3px;
+  padding: 5px;
+  border-collapse: separate;
+  height: 225px;
+  overflow: auto;
+  align-self: center; 
+  display: none;
 }
 
 #yelp:nth-child(odd) {
@@ -87,8 +92,13 @@ div {
     border-style: ridge;
     box-sizing: border-box;
 }
+.checkboxes {
+  background-image: url("../../images/palm-tree.jpg");
+  height:150px;
+  border-radius: 15px;
+}
 
-#check input {
+.checkboxes input {
   height: 35px;
   width: 35px;
   position: relative;

@@ -1,5 +1,60 @@
 $(document).ready(function () {
 
+  function yelpdata(somearr) {
+    $('#yelp').css('display', 'block')
+    var result = somearr.businesses;
+    console.log(result);
+    
+    var hotel = ['HOTELS'];
+    $("#yelp").append("<br>" + hotel + "<br><br>");
+
+    for (let i = 0; i < 9; i++) {
+
+      // Creating a div to hold the hotel
+      var hotelDiv = $("<div class='table table-borderless' id='yelp'>");
+
+      // Storing the name of the hotel
+      var name = result[i].name;
+      console.log(name);
+
+      // Storing the price of the hotel
+      var price = result[i].price;
+      console.log(price);
+
+      // Storing the URL of the hotel
+      var url = result[i].url;
+      console.log(url)
+
+      // Creating a p tag with info
+      var p = $("<p>").text("Name: " + name);
+      var img = $('<img class="images" style="width:200px;height:200px;" id ="image-' + i + '">')
+      img.attr("src", result[i].image_url)
+      var checkmark = $('<input type="checkbox" id="checkbox-' + i + '">');
+
+      // Appending the p tag to the Hotel Div we created
+
+      hotelDiv.append("<br>" + name + "<br>" + 'Price Range: ' + price + "<br>" + 'Phone Number: ' + result[i].phone + "<br>")
+
+      hotelDiv.prepend(img)
+      hotelDiv.append(checkmark)
+      hotelDiv.css('display', 'block')
+      // Append the hotelDiv to the "#yelp" div in the HTML
+      $("#yelp").append(hotelDiv);
+    };
+
+    // Extracts and displays Weather Report
+    function weather() {
+      var weather = $("<tr>").append(
+        $("<td>").append('<img src="./images/weather2.jpg" style="width:200px;height:200px;">')
+      );
+      $('#weather').append(weather)
+    }
+    weather();
+
+
+  }
+
+
   function ticketmasterdata(somearr) {
     var result = somearr._embedded.events;
     console.log(result);
@@ -25,7 +80,7 @@ $(document).ready(function () {
 
       tickets.append(nameevent + "<br>" + venue + "<br>" + startdate + "&nbsp&nbsp&nbsp" + starttime
         + "<br>" + "Event Type: " + type + "&nbsp&nbsp&nbsp" + "Genre: " + genre + "<br>");
-        
+
       $('#ticket-master').append(tickets);
     }
   }
@@ -131,75 +186,6 @@ $(document).ready(function () {
     }).then(function (response) {
       console.log(response)
     })
-
-    // Yelp hotel API
-    var settings = {
-      "async": true,
-      "crossDomain": true,
-      "url": `https://api.yelp.com/v3/businesses/search?term=hotel&location=${destination}`,
-      "method": "GET",
-      "headers": {
-        "Authorization": "Bearer 8PjqRtWKJIqnBZiMXVyB_Vj0DSnztb_o9Nrn-vYpgAjiDiTmtoUn94UwnrLNfBYKa64OCp9zHcSsHaNfGOO2AaFqYuGjtmz2iJjgcNQ2Zo4UExt_foAbVBEfxAWwXHYx",
-        "cache-control": "no-cache",
-        "Postman-Token": "9b6b8187-1188-4a33-a6b7-11e21b552914"
-      }
-    }
-
-    $.ajax(settings).done(function (response) {
-      console.log(response);
-      var result = response.businesses;
-      console.log(result);
-
-      var hotel = ['HOTELS'];
-
-      $("#yelp").append("<br>" + hotel + "<br><br>");
-
-      for (let i = 0; i < 9; i++) {
-        // Creating a div to hold the hotel
-
-        var hotelDiv = $("<div class='table table-borderless' id='yelp'>");
-
-        // Storing the name of the hotel
-        var name = result[i].name;
-        console.log(name);
-
-        // Storing the price of the hotel
-        var price = result[i].price;
-        console.log(price);
-
-        // Storing the URL of the hotel
-        var url = result[i].url;
-        console.log(url)
-
-        // Creating a p tag with info
-        var p = $("<p>").text("Name: " + name);
-        var img = $('<img class="images" style="width:200px;height:200px;" id ="image-' + i + '">')
-        img.attr("src", result[i].image_url)
-
-        // Appending the p tag to the Hotel Div we created
-
-        hotelDiv.append("<br>" + name + "<br>" + 'Price Range: ' + price + "<br>" + 'Phone Number: ' + result[i].phone + "<br>")
-
-        hotelDiv.prepend(img)
-
-        // Append the hotelDiv to the "#yelp" div in the HTML
-        $("#yelp").append(hotelDiv);
-      };
-
-      // Extracts and displays Weather Report
-      function weather() {
-        var weather = $("<tr>").append(
-          $("<td>").append('<img src="./images/weather2.jpg" style="width:200px;height:200px;">')
-        );
-        $('#weather').append(weather)
-      }
-      weather();
-
-
-    });
-
-
-    // Ticketmaster API City 
     var settings2 = {
       "async": true,
       "crossDomain": true,
@@ -215,25 +201,49 @@ $(document).ready(function () {
       console.log(response);
       ticketmasterdata(response);
     });
+
+
+    if (hotels.checked) {
+      // Yelp hotel API
+      var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": `https://api.yelp.com/v3/businesses/search?term=hotel&location=${destination}`,
+        "method": "GET",
+        "headers": {
+          "Authorization": "Bearer 8PjqRtWKJIqnBZiMXVyB_Vj0DSnztb_o9Nrn-vYpgAjiDiTmtoUn94UwnrLNfBYKa64OCp9zHcSsHaNfGOO2AaFqYuGjtmz2iJjgcNQ2Zo4UExt_foAbVBEfxAWwXHYx",
+          "cache-control": "no-cache",
+          "Postman-Token": "9b6b8187-1188-4a33-a6b7-11e21b552914"
+        }
+      }
+
+      $.ajax(settings).done(function (response) {
+        console.log(response);
+        yelpdata(response)
+      });
+    }
+
+
+    // Ticketmaster API City 
   });
 
 
 
-// Dynamically creates checkboxes with gifs to the right
-  function appendCheck() {
-    var div = $("<div>");
-    var gifs = ["<img src=./images/hotel-gif.gif>", "<img src=./images/car.gif>"];
-    // var checkbox = ["<input type='checkbox' checked='yes'>"];
+  // Dynamically creates checkboxes with gifs to the right
+  // function appendCheck() {
+  //   var div = $("<div>");
+  //   var gifs = ["<img src=./images/hotel-gif.gif>", "<img src=./images/car.gif>"];
+  //   // var checkbox = ["<input type='checkbox' checked='yes'>"];
 
 
-    for (var i = 0; i < gifs.length; i++) {
-      
-      div.append("&nbsp&nbsp&nbsp" + "<div id=submit-btn>"  + "<input type='checkbox' checked='yes'>" + "</input>"
-       + "&nbsp&nbsp" + gifs[i] + "&nbsp&nbsp&nbsp");
-      
-    }
-    $("#check").append(div);
-  }
-  appendCheck();
+  //   for (var i = 0; i < gifs.length; i++) {
+
+  //     div.append("&nbsp&nbsp&nbsp" + "<div id=submit-btn>"  + "" + "</input>"
+  //      + "&nbsp&nbsp" + gifs[i] + "&nbsp&nbsp&nbsp");
+
+  //   }
+  //   $("#check").append(div);
+  // }
+  // appendCheck();
 
 });

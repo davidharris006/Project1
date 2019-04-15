@@ -60,10 +60,16 @@
     </div>
   </div><br>
   <div id="check">
-    <span class="checkmark"></span>
+    <div class="checkboxes">
+      <input id="cars" type='checkbox' checked='yes'></input>
+      <img src="./images/car.gif" alt="">
+    </div>
   </div>
-  <br>
-  <br>
+  <div class="checkboxes">
+    <input id="hotels" type='checkbox' checked='yes'></input>
+    <img src="./images/hotel-gif.gif" alt="">
+  </div><br><br>
+  
   <div class="col-lg-6">
     <button type="submit" id="submit-btn" class="btn btn-primary">SUBMIT</button>
   </div>
@@ -71,13 +77,11 @@
 
   <!-- After submit is clicked the search results are shown below -->
   <div class="row">
-    <div class="col-lg-3">
-      <div id="airline" class="col-lg-8"></div>
-    </div>
+    <div class="col-lg-2" id="airline"></div>
     <!-- Yelp Hotel info goes here -->
-    <div class="col-lg-6" id="yelp"></div>
+    <div class="col-lg-8 center" id="yelp"></div>
     <!-- Weather info here -->
-    <div class="col-lg-3" id="weather"></div>
+    <div class="col-lg-2" id="weather"></div>
   </div>
   <br><br><br>
   <!-- Ticketmaster Events -->
