@@ -211,7 +211,6 @@ $(document).ready(function () {
     $.ajax(settings2).done(function (response) {
       console.log(response);
       ticketmasterdata(response);
-
     });
   });
 
@@ -228,7 +227,7 @@ $(document).ready(function () {
       
       div.append("&nbsp&nbsp&nbsp" + "<div id=submit-btn>"  + "<input type='checkbox' checked='yes'>" + "</input>"
        + "&nbsp&nbsp" + gifs[i] + "&nbsp&nbsp&nbsp");
-      // div.append(checkbox[i]);
+      
     }
     $("#check").append(div);
   }
