@@ -1,8 +1,11 @@
 $(document).ready(function () {
 
   function yelppoidata(somearr) {
+    $('#yelppoi').css('display', 'block')
     var result = somearr.businesses;
     console.log(result)
+    $("#yelppoi").append("<br>SIGHTS<br><br>")
+
     for (let i = 0; i < 9; i++) {
       var poiDiv = $("<div class='table table-borderless' id='yelppoitbl'>");
 
