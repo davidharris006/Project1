@@ -32,29 +32,25 @@
   <!-- </div> -->
 
   <div class="row">
-
-    <form>
-      <div class="form-row">
-        <div class="col-md-4">
-          <label for="inputDestination">Destination (City)</label>
-
-          <input type="text" class="form-control" id="destination" placeholder="Destination City">
-        </div>
-        <!-- </div><br> -->
-        <!-- <div class="form-row"> -->
-
-        <div class="col-md-4">
-          <label for="inputStartDate">Start Date</label>
-          <input type="date" class="form-control" id="startDate" value="2019-08-19">
-        </div>
-        <div class="col-md-4">
-          <label for="inputEndDate">End Date</label>
-          <input type="date" class="form-control" id="endDate" value="2019-08-31"><br>
-        </div>
+    <div class="col-md-4"></div>
+    <form class="form-row">
+      <div class="col-md-4">
+        <label for="inputDestination">Destination (City)</label>
+        <input type="text" class="form-control" id="destination" placeholder="Destination City">
+      </div>
+      <div class="col-md-4">
+        <label for="inputStartDate">Start Date</label>
+        <input type="date" class="form-control" id="startDate" value="2019-08-19">
+      </div>
+      <div class="col-md-4">
+        <label for="inputEndDate">End Date</label>
+        <input type="date" class="form-control" id="endDate" value="2019-08-31"><br>
       </div>
     </form>
+    <div class="col-md-4"></div>
   </div>
-  <br>
+  <br><br>
+
   <div class="row">
     <div class="col-lg-12 align-center">
       <div id="check">
@@ -73,25 +69,22 @@
       &NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;
       <button id="save-btn" class="btn btn-primary">SAVE</button>
     </div>
-    </form>
-    <br><br><br>
-  </div>
-  <br><br>
+  </div><br><br>
 
   <!-- After submit is clicked the search results are shown below -->
   <div class="container">
     <div class="row">
-      <!-- Yelp Hotel info goes here -->
+      
       <div class="col-lg-8 center">
-        <div class="row">
+        <div class="row"> <!-- Yelp Hotel info goes here -->
           <div class="col-lg-12" id="yelp"></div>
         </div>
         <br>
-        <div class="row">
+        <div class="row"> <!-- Yelp  POIs go here -->
           <div class="col-lg-12 center" id="yelppoi"></div>
         </div>
         <br>
-        <div class="row">
+        <div class="row"> <!-- Event info goes here -->
           <div class="col-lg-12" id="ticket-master"><br></div>
         </div>
         <br>
@@ -99,21 +92,8 @@
       <!-- Weather info here -->
       <div class="col-lg-4 center" id="weather"></div>
     </div>
-
-    <div class="row">
-    </div>
-    <!-- Ticketmaster Events -->
-    <div class="row">
-      <br>
-      <!-- <div class="col-lg-6" id="rental-car"></div> -->
-    </div>
-
   </div>
-  <div class="col-lg-4">
-
-    <div class="col-lg-6 center" id="weather"></div>
-  </div>
-  </div>
+ 
 
   <!-- jQuery links -->
   <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
