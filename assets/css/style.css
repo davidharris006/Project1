@@ -33,6 +33,8 @@ table, td, th,  tr {
   
 }
 
+
+
 #yelppoi tr:nth-child(even){
   background-color: red;
   padding: 3px;
@@ -171,6 +173,40 @@ div {
     -webkit-text-stroke-color: black;
 }
 
+#submit-btn:active {
+    background-color:red; /* When the button is clicked */
+    box-shadow: 0 7px green;
+    transform: translateY(4px);
+  }
+
+#submit-btn:hover {
+  color: yellow;
+}
+#save-btn {
+  cursor: pointer;
+    font-size: 25px;
+    color: white;
+    height: auto;
+    font-weight: bolder;
+    border-color: black;
+    border-width: 7px;
+    padding: 11px;
+    border-radius: 11px;
+    font-style: inherit;
+    text-align: center;
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: black;
+}
+
+#save-btn:hover {
+  background-color: yellow;
+}
+
+#save-btn:active {
+  background-color:red; /* When the button is clicked */
+  box-shadow: 0 7px green;
+  transform: translateY(4px);
+}
 .images {
   height: 100px;
   width: 100px;
@@ -188,11 +224,7 @@ div {
 
 }
 
-#submit-btn:hover {
 
-    color: yellow;
-    
-}
 
 #submit-btn:active {
     background-color:red; /* When the button is clicked */
