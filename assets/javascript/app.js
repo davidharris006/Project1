@@ -17,11 +17,11 @@ $(document).ready(function () {
 
       var checkmark = $('<input type="checkbox" id="checkbox-' + i + '">');
       var img = $('<img class="images" style="width:200px;height:200px;" id ="image-' + i + '">');
-      poiDiv.append("<br>" + "Name: " + name + "<br>" + "Address: " + addressfirst+ addresssecond + "<br>" + "Rating: " + rating + "<br>" )
+      poiDiv.append(img + "Name: " + name + "<br>" + "Address: " + addressfirst+ addresssecond + "<br>" + "Rating: " + rating + "<br>" )
       img.attr("src", result[i].image_url)
 
-      poiDiv.append(checkmark);
-      poiDiv.prepend(img);
+      poiDiv.prepend(checkmark);
+      // poiDiv.prepend(img);
       poiDiv.css('display', 'block');
 
       $('#yelppoi').append(poiDiv);
