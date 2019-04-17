@@ -37,7 +37,7 @@
   display: none;
 }
 
-yelppoitbl {
+/* #yelppoitbl {
   font-size: 22px;
   text-align: center;
   padding: 5px;
@@ -46,7 +46,7 @@ yelppoitbl {
   overflow: auto;
   align-self: center; 
   display: none;
-}
+} */
 
 yelppoitbl:nth-child(odd) {
   background: -webkit-linear-gradient(-45deg, rgba(183,222,237,1) 0%,
