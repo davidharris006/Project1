@@ -7,7 +7,7 @@ $(document).ready(function () {
     $("#yelppoi").append("<br>SIGHTS<br><br>")
 
     for (let i = 0; i < 9; i++) {
-      var poiDiv = $("<div class='table table-borderless' id='yelppoitbl'>");
+      var poiDiv = $("<div class='table table-borderless' id='yelppoi'>");
 
       var name = result[i].name
       var addressfirst = result[i].location.display_address[1]
@@ -15,16 +15,14 @@ $(document).ready(function () {
       var rating = result[i].rating
      
 
-      
-      var img = $('<img class="images" style="width:200px;height:200px;" id ="image-' + i + '">')
+      var checkmark = $('<input type="checkbox" id="checkbox-' + i + '">');
+      var img = $('<img class="images" style="width:200px;height:200px;" id ="image-' + i + '">');
       poiDiv.append("<br>" + "Name: " + name + "<br>" + "Address: " + addressfirst+ addresssecond + "<br>" + "Rating: " + rating + "<br>" )
-      var checkmark = $('<input type="checkbox" id="checkbox-' + i + '">')
       img.attr("src", result[i].image_url)
 
-      
-      poiDiv.prepend(img)
-      poiDiv.append(checkmark)
-      poiDiv.css('display', 'block')
+      poiDiv.append(checkmark);
+      poiDiv.prepend(img);
+      poiDiv.css('display', 'block');
 
       $('#yelppoi').append(poiDiv);
 
