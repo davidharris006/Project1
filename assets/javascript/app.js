@@ -185,7 +185,7 @@ $(document).ready(function () {
         console.log(response);
 
         var weatherData = "";
-        weatherData += "<h3>" + response.city.name + " Weather</h3>";
+        weatherData += "<h4>" + response.city.name + " Weather</h4>";
         $.each(response.list, function (index, val) {
             weatherData += "<p>"
             weatherData += "Day " + index + ": "

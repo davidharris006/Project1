@@ -87,6 +87,12 @@
 
 #ticket-row {
   background-image: url("../../images/palm-tree-inv.jpg");
+
+}
+
+#weather {
+  background: rgba(224, 251, 255, 0.5);
+  font-size: 18px;
 }
 
 div {
