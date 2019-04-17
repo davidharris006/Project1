@@ -17,7 +17,7 @@ $(document).ready(function () {
 
       var checkmark = $('<input type="checkbox" id="checkbox-' + i + '">');
       var img = $('<img class="images" style="width:200px;height:200px;" id ="image-' + i + '">');
-      poiDiv.append("<br>" + "Name: " + name + "<br>" + "Address: " + addressfirst + addresssecond + "<br>" + "Rating: " + rating + "<br>")
+      poiDiv.append("<br>" + "Name: " + name + "<br>" + "Address: " + addressfirst + "<br>" + "Rating: " + rating + "<br>" )
       img.attr("src", result[i].image_url)
 
       poiDiv.append(checkmark);
@@ -25,7 +25,7 @@ $(document).ready(function () {
       poiDiv.css('display', 'block');
 
       $('#yelppoi').append(poiDiv);
-
+     
     }
 
   }
@@ -91,9 +91,9 @@ $(document).ready(function () {
 
 
     // Heading for events
-    var newEvent = $("<br>" + '<img src="./images/events.gif" style="width:200px;height:200px;">' + "<br><br>");
+    
 
-    $('#ticket-master').append(newEvent);
+ 
 
     // Extracts event info from Ticket Master
 
@@ -113,7 +113,8 @@ $(document).ready(function () {
 
       $('#ticket-master').css('display', 'block')
       $('#ticket-master').append(tickets);
-
+      $('#ticket-master').append('<br>')
+      
     }
   }
 
@@ -156,10 +157,10 @@ $(document).ready(function () {
   $('#submit-btn').on('click', function (event) {
     event.preventDefault();
 
-    $('#airline').empty()
+    $('#yelppoi').empty()
     $('#yelp').empty()
-    $('#ticketmaster').empty()
-
+    $('#ticket-master').empty()
+    
     let destination = "";
     let start = "";
     let end = "";
@@ -211,6 +212,8 @@ $(document).ready(function () {
 
 
     // Yelp POI API
+
+    if (sights.checked) {
     var settings1 = {
       "async": true,
       "crossDomain": true,
@@ -228,7 +231,7 @@ $(document).ready(function () {
       console.log(response);
       yelppoidata(response)
     });
-
+  }
 
 
     // // Flight API
@@ -248,6 +251,8 @@ $(document).ready(function () {
 
 
     // Ticketmaster API City 
+
+    if (events.checked) {
     var settings2 = {
       "async": true,
       "crossDomain": true,
@@ -264,8 +269,8 @@ $(document).ready(function () {
       ticketmasterdata(response);
     });
 
-
-    if (hotels.checked) {
+  }
+    
       // Yelp hotel API
       var settings = {
         "async": true,
@@ -283,7 +288,7 @@ $(document).ready(function () {
         console.log(response);
         yelpdata(response)
       });
-    }
+    
 
 
   });
