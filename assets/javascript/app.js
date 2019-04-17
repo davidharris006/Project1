@@ -188,10 +188,10 @@ $(document).ready(function () {
         weatherData += "<h3>" + response.city.name + " Weather</h3>";
         $.each(response.list, function (index, val) {
             weatherData += "<p>"
-            weatherData += "<b>Day</b> " + index + ": "
-            weatherData += val.main.temp + "° F"
-            weatherData += "<span> | " + val.weather[0].description + "</span>";
+            weatherData += "Day " + index + ": "
+            weatherData += Math.round(val.main.temp) + "° F |"
             weatherData += "<img src='https://openweathermap.org/img/w/" + val.weather[0].icon + ".png'>"
+            weatherData += "<span>" + val.weather[0].description + "</span>";
             weatherData += "</p>"
         });
         $("#weather").html(weatherData);
