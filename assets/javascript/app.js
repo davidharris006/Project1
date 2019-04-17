@@ -57,6 +57,8 @@ $(document).ready(function () {
       // Storing the name of the hotel
       var name = result[i].name;
       console.log(name);
+      var address= result[i].location.address1 +", "+ result[i].location.city;
+      console.log(address)
 
       // Storing the price of the hotel
       var price = result[i].price;
@@ -74,7 +76,7 @@ $(document).ready(function () {
 
       // Appending the p tag to the Hotel Div we created
 
-      hotelDiv.append("<br>" + "Name: " + name + "<br>" + 'Price Range: ' + price + "<br>" + 'Phone Number: ' + result[i].phone + "<br>")
+      hotelDiv.append("<br>" + "Name: " + name + "<br>" + 'Price Range: ' + price + "<br>" +'Address: '+ address +'<br>' +'Phone Number: ' + result[i].phone + "<br>")
 
       hotelDiv.prepend(img)
       hotelDiv.append(checkmark)
@@ -197,13 +199,13 @@ $(document).ready(function () {
         console.log(response);
 
         var weatherData = "";
-        weatherData += "<h3>" + response.city.name + " Weather</h3>";
+        weatherData += "<h4>" + response.city.name + " Weather</h4>";
         $.each(response.list, function (index, val) {
             weatherData += "<p>"
-            weatherData += "<b>Day</b> " + index + ": "
-            weatherData += val.main.temp + "° F"
-            weatherData += "<span> | " + val.weather[0].description + "</span>";
+            weatherData += "Day " + index + ": "
+            weatherData += Math.round(val.main.temp) + "° F |"
             weatherData += "<img src='https://openweathermap.org/img/w/" + val.weather[0].icon + ".png'>"
+            weatherData += "<span>" + val.weather[0].description + "</span>";
             weatherData += "</p>"
         });
         $("#weather").html(weatherData);

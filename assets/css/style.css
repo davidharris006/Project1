@@ -17,7 +17,7 @@ table, td, th,  tr {
 }
 
 .display-4 {
-  color: white;
+  color: black;
   font-family: 'Averia Serif Libre', cursive;
 }
 
@@ -105,6 +105,12 @@ yelppoitbl:nth-child(even) {
 
 #ticket-row {
   background-image: url("../../images/palm-tree-inv.jpg");
+
+}
+
+#weather {
+  background: rgba(224, 251, 255, 0.5);
+  font-size: 18px;
 }
 
 div {
@@ -228,7 +234,11 @@ footer {
 }
 
 .jumbotron {
+<<<<<<< HEAD
   background-color: rgba(255, 255, 255, .7)
+=======
+  background: rgba(224, 251, 255, 0.5);
+>>>>>>> 86b22fcced98ddbc4335d4b348b995a0adee66c0
 }
   
 @media only screen and (max-width: 980px) {
