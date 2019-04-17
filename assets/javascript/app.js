@@ -25,7 +25,7 @@ $(document).ready(function () {
       poiDiv.css('display', 'block');
 
       $('#yelppoi').append(poiDiv);
-
+     
     }
 
   }
@@ -91,7 +91,7 @@ $(document).ready(function () {
 
 
     // Heading for events
-    var newEvent = $("<br>" + '<img src="./images/events.gif" style="width:200px;height:200px;">' + "<br><br>");
+    
 
     $('#ticket-master').append(newEvent);
 
@@ -113,6 +113,7 @@ $(document).ready(function () {
       
       $('#ticket-master').css('display', 'block')
       $('#ticket-master').append(tickets);
+      $('#ticket-master').append('<br>')
       
     }
   }
