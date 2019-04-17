@@ -108,12 +108,12 @@ $(document).ready(function () {
       var genre = result[i].classifications[0].genre.name
       var venue = result[i]._embedded.venues[0].name
 
-      var tickets = $("<div id='ticket-master'>");
+      var tickets = $("<div id='ticketmasterdata'>");
 
       tickets.append(nameevent + "<br>" + venue + "<br>" + startdate + "&nbsp&nbsp&nbsp" + starttime
-        + "<br>" + "Event Type: " + type + "&nbsp&nbsp&nbsp" + "Genre: " + genre + "<br>");
+        + "<br>" + "Event Type: " + type + "&nbsp&nbsp&nbsp" + "Genre: " + genre + "<br> ");
       
-      
+      $('#ticket-master').css('display', 'block')
       $('#ticket-master').append(tickets);
       
     }

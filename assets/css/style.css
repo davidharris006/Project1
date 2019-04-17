@@ -67,10 +67,16 @@ yelppoitbl:nth-child(even) {
 }
 
 #ticket-master {
+ 
+  display: none;
+  overflow: auto;
+  height: 225px;
+}
+#ticketmasterdata {
   font-size: 22px;
   text-align: center;
   padding: 5px;
-  
+  border: 1px solid black;
 }
 
 #ticket-master:nth-child(odd) {
