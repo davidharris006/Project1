@@ -1,12 +1,12 @@
 $(document).ready(function () {
-
+  // Creates yelp POIs
   function yelppoidata(somearr) {
     $('#yelppoi').css('display', 'block')
     var result = somearr.businesses;
     console.log(result)
 
-    var sights = ['<img src="https://i.gifer.com/FG7V.gif" style="width:25%; height:50%; border-radius:20px;" alt="">']
-    $("#yelppoi").append(sights)
+    var sights = ['<img src="https://i.gifer.com/FG7V.gif" style="width:30%; height:60%; border-radius:20px;" alt="">']
+    $("#yelppoi").append("<br>" + sights + "<br><br>")
 
     for (let i = 0; i < 9; i++) {
       var poiDiv = $("<div class='table table-borderless' id='yelppoi'>");
@@ -19,8 +19,6 @@ $(document).ready(function () {
       // Creates text display for Points of Interest
       var text = "Name: " + name + "<br>" + "Address: " + addressfirst + " " + addresssecond + "<br>" + "Rating: " + rating + "<br>";
 
-      // var checkmark = $('<input type="checkbox" id="checkbox-' + i + '">' + '<label>' + '<img class="images" style="width:200px;height:200px;" id ="image-' 
-      // + i + '" + src="' + result[i].image_url + "'>" + text + "</label>" );
       // Creates checkboxes
       var input = $(`<input type='checkbox' id='checkbox-${i}'></input>`);
       // Appends the text for Points of Interest
@@ -28,19 +26,20 @@ $(document).ready(function () {
       // Displays the hotel image
       var img = $(`<img class='images' style='width:200px;height:200px;' id='image-${i}' src='${result[i].image_url}'>`);
 
-      poiDiv.prepend(input);
+
       poiDiv.append(img);
       poiDiv.append(content);
-      
-      
+      poiDiv.append(input);
+
       poiDiv.css('display', 'block');
 
       $('#yelppoi').append(poiDiv);
-     
+
     }
 
   }
 
+  // Yelp hotel data
   function yelpdata(somearr) {
     $('#yelp').css('display', 'block')
     var result = somearr.businesses;
@@ -57,7 +56,7 @@ $(document).ready(function () {
       // Storing the name of the hotel
       var name = result[i].name;
       console.log(name);
-      var address= result[i].location.address1 +", "+ result[i].location.city;
+      var address = result[i].location.address1 + ", " + result[i].location.city;
       console.log(address)
 
       // Storing the price of the hotel
@@ -76,7 +75,7 @@ $(document).ready(function () {
 
       // Appending the p tag to the Hotel Div we created
 
-      hotelDiv.append("<br>" + "Name: " + name + "<br>" + 'Price Range: ' + price + "<br>" +'Address: '+ address +'<br>' +'Phone Number: ' + result[i].phone + "<br>")
+      hotelDiv.append("<br>" + "Name: " + name + "<br>" + 'Price Range: ' + price + "<br>" + 'Address: ' + address + '<br>' + 'Phone Number: ' + result[i].phone + "<br>")
 
       hotelDiv.prepend(img)
       hotelDiv.append(checkmark)
@@ -102,12 +101,10 @@ $(document).ready(function () {
     var result = somearr._embedded.events;
     console.log(result);
 
-
     // Heading for events
-    var eventsPic = ['<img src="https://i.gifer.com/7TaD.gif" style="width:75%; height:100%; border-radius:20px;" alt="">'];
-    $("#yelppoi").append(eventsPic);
+    var eventsPic = ['<img src="https://i.gifer.com/7TaD.gif" style="width:30%; height:60%; border-radius:20px;" alt="">'];
+    $("#ticket-master").append("<br>" + (eventsPic) + "<br><br>");
 
- 
 
     // Extracts event info from Ticket Master
 
@@ -128,7 +125,7 @@ $(document).ready(function () {
       $('#ticket-master').css('display', 'block')
       $('#ticket-master').append(tickets);
       $('#ticket-master').append('<br>')
-      
+
     }
   }
 
@@ -174,7 +171,7 @@ $(document).ready(function () {
     $('#yelppoi').empty()
     $('#yelp').empty()
     $('#ticket-master').empty()
-    
+
     let destination = "";
     let start = "";
     let end = "";
@@ -201,12 +198,12 @@ $(document).ready(function () {
         var weatherData = "";
         weatherData += "<h4>" + response.city.name + " Weather</h4>";
         $.each(response.list, function (index, val) {
-            weatherData += "<p>"
-            weatherData += "Day " + index + ": "
-            weatherData += Math.round(val.main.temp) + "° F |"
-            weatherData += "<img src='https://openweathermap.org/img/w/" + val.weather[0].icon + ".png'>"
-            weatherData += "<span>" + val.weather[0].description + "</span>";
-            weatherData += "</p>"
+          weatherData += "<p>"
+          weatherData += "Day " + index + ": "
+          weatherData += Math.round(val.main.temp) + "° F |"
+          weatherData += "<img src='https://openweathermap.org/img/w/" + val.weather[0].icon + ".png'>"
+          weatherData += "<span>" + val.weather[0].description + "</span>";
+          weatherData += "</p>"
         });
         $("#weather").html(weatherData);
 
@@ -228,24 +225,24 @@ $(document).ready(function () {
     // Yelp POI API
 
     if (sights.checked) {
-    var settings1 = {
-      "async": true,
-      "crossDomain": true,
-      "url": `https://api.yelp.com/v3/businesses/search?term=points%20of%20interest&location=${destination}`,
-      "method": "GET",
-      "headers": {
-        "Authorization": "Bearer 8PjqRtWKJIqnBZiMXVyB_Vj0DSnztb_o9Nrn-vYpgAjiDiTmtoUn94UwnrLNfBYKa64OCp9zHcSsHaNfGOO2AaFqYuGjtmz2iJjgcNQ2Zo4UExt_foAbVBEfxAWwXHYx",
-        "cache-control": "no-cache",
-        "Postman-Token": "07addf4a-c766-4208-8aae-028e210c4bdb"
+      var settings1 = {
+        "async": true,
+        "crossDomain": true,
+        "url": `https://api.yelp.com/v3/businesses/search?term=points%20of%20interest&location=${destination}`,
+        "method": "GET",
+        "headers": {
+          "Authorization": "Bearer 8PjqRtWKJIqnBZiMXVyB_Vj0DSnztb_o9Nrn-vYpgAjiDiTmtoUn94UwnrLNfBYKa64OCp9zHcSsHaNfGOO2AaFqYuGjtmz2iJjgcNQ2Zo4UExt_foAbVBEfxAWwXHYx",
+          "cache-control": "no-cache",
+          "Postman-Token": "07addf4a-c766-4208-8aae-028e210c4bdb"
+        }
       }
-    }
 
-    $.ajax(settings1).done(function (response) {
-      console.log("this response");
-      console.log(response);
-      yelppoidata(response)
-    });
-  }
+      $.ajax(settings1).done(function (response) {
+        console.log("this response");
+        console.log(response);
+        yelppoidata(response)
+      });
+    }
 
 
     // // Flight API
@@ -267,42 +264,42 @@ $(document).ready(function () {
     // Ticketmaster API City 
 
     if (events.checked) {
-    var settings2 = {
-      "async": true,
-      "crossDomain": true,
-      "url": `https://app.ticketmaster.com/discovery/v2/events?apikey=pmgv5WgmN8XawGTxvYH4j912nx7ijBIw&city=${destination}&sort=date,asc&localStartDateTime=${start.format('YYYY-MM-DDTHH:mm:ss')}`,
-      "method": "GET",
-      "headers": {
-        "cache-control": "no-cache",
-        "Postman-Token": "7fc3d51f-16dd-494c-b5dd-60edb9a55979"
-      }
-    }
-
-    $.ajax(settings2).done(function (response) {
-      console.log(response);
-      ticketmasterdata(response);
-    });
-
-  }
-    
-      // Yelp hotel API
-      var settings = {
+      var settings2 = {
         "async": true,
         "crossDomain": true,
-        "url": `https://api.yelp.com/v3/businesses/search?term=hotel&location=${destination}`,
+        "url": `https://app.ticketmaster.com/discovery/v2/events?apikey=pmgv5WgmN8XawGTxvYH4j912nx7ijBIw&city=${destination}&sort=date,asc&localStartDateTime=${start.format('YYYY-MM-DDTHH:mm:ss')}`,
         "method": "GET",
         "headers": {
-          "Authorization": "Bearer 8PjqRtWKJIqnBZiMXVyB_Vj0DSnztb_o9Nrn-vYpgAjiDiTmtoUn94UwnrLNfBYKa64OCp9zHcSsHaNfGOO2AaFqYuGjtmz2iJjgcNQ2Zo4UExt_foAbVBEfxAWwXHYx",
           "cache-control": "no-cache",
-          "Postman-Token": "9b6b8187-1188-4a33-a6b7-11e21b552914"
+          "Postman-Token": "7fc3d51f-16dd-494c-b5dd-60edb9a55979"
         }
       }
 
-      $.ajax(settings).done(function (response) {
+      $.ajax(settings2).done(function (response) {
         console.log(response);
-        yelpdata(response)
+        ticketmasterdata(response);
       });
-    
+
+    }
+
+    // Yelp hotel API
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": `https://api.yelp.com/v3/businesses/search?term=hotel&location=${destination}`,
+      "method": "GET",
+      "headers": {
+        "Authorization": "Bearer 8PjqRtWKJIqnBZiMXVyB_Vj0DSnztb_o9Nrn-vYpgAjiDiTmtoUn94UwnrLNfBYKa64OCp9zHcSsHaNfGOO2AaFqYuGjtmz2iJjgcNQ2Zo4UExt_foAbVBEfxAWwXHYx",
+        "cache-control": "no-cache",
+        "Postman-Token": "9b6b8187-1188-4a33-a6b7-11e21b552914"
+      }
+    }
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+      yelpdata(response)
+    });
+
 
 
   });
