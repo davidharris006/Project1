@@ -46,6 +46,8 @@ $(document).ready(function () {
       // Storing the name of the hotel
       var name = result[i].name;
       console.log(name);
+      var address= result[i].location.address1 +", "+ result[i].location.city;
+      console.log(address)
 
       // Storing the price of the hotel
       var price = result[i].price;
@@ -63,7 +65,7 @@ $(document).ready(function () {
 
       // Appending the p tag to the Hotel Div we created
 
-      hotelDiv.append("<br>" + "Name: " + name + "<br>" + 'Price Range: ' + price + "<br>" + 'Phone Number: ' + result[i].phone + "<br>")
+      hotelDiv.append("<br>" + "Name: " + name + "<br>" + 'Price Range: ' + price + "<br>" +'Address: '+ address +'<br>' +'Phone Number: ' + result[i].phone + "<br>")
 
       hotelDiv.prepend(img)
       hotelDiv.append(checkmark)
