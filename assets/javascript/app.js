@@ -13,15 +13,21 @@ $(document).ready(function () {
       var addressfirst = result[i].location.display_address[1]
       var addresssecond = result[i].location.display_address[2]
       var rating = result[i].rating
-     
 
-      var checkmark = $('<input type="checkbox" id="checkbox-' + i + '">');
-      var img = $('<img class="images" style="width:200px;height:200px;" id ="image-' + i + '">');
-      poiDiv.append(img + "Name: " + name + "<br>" + "Address: " + addressfirst+ addresssecond + "<br>" + "Rating: " + rating + "<br>" )
-      img.attr("src", result[i].image_url)
+      // Creates text 
+      var text = "Name: " + name + "<br>" + "Address: " + addressfirst + " " + addresssecond + "<br>" + "Rating: " + rating + "<br>";
 
-      poiDiv.prepend(checkmark);
-      // poiDiv.prepend(img);
+      // var checkmark = $('<input type="checkbox" id="checkbox-' + i + '">' + '<label>' + '<img class="images" style="width:200px;height:200px;" id ="image-' 
+      // + i + '" + src="' + result[i].image_url + "'>" + text + "</label>" );
+      var input = $(`<input type='checkbox' id='checkbox-${i}'>`);
+      var content = $(`<label for='checkbox-${i}'>${text}</label>`);
+      var img = $(`<img class='images' style='width:200px;height:200px;' id='image-${i}' src='${result[i].image_url}'>`);
+
+      poiDiv.append(input);
+      poiDiv.append(img);
+      poiDiv.append(content);
+      
+      
       poiDiv.css('display', 'block');
 
       $('#yelppoi').append(poiDiv);
@@ -99,7 +105,7 @@ $(document).ready(function () {
 
     for (let i = 0; i < 10; i++) {
 
-      var nameevent = result[i].name
+      var nameevent = result[i].name;
       var startdate = moment(result[i].dates.start.localDate).format("MM-DD-YYYY")
       var starttime = moment(result[i].dates.start.localTime, "HH:mm").format("hh:mm")
       var type = result[i].classifications[0].segment.name
