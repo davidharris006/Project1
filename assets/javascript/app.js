@@ -161,20 +161,20 @@ $(document).ready(function () {
     $('#airline').empty()
     $('#yelp').empty()
     $('#ticketmaster').empty()
-    let from = "";
+    
     let destination = "";
     let start = "";
     let end = "";
 
     // Takes the user inputs from the specified IDs
-    from = $("#from").val().trim();
+    
     destination = $("#destination").val().trim();
     start = moment($("#startDate").val().trim());
     end = moment($("#endDate").val().trim());
 
     console.log(end);
 
-    $("#from").val("");
+    
     $("#destination").val("");
     $("#startDate").val("");
     $("#endDate").val("");
@@ -208,20 +208,20 @@ $(document).ready(function () {
 
 
 
-    // Flight API
-    $.ajax({
-      url: `http://api.travelpayouts.com/v2/prices/month-matrix?currency=usd&origin=LAX&destination=JFK&month=${start.format("YYYY-MM-DD")}&show_to_affiliates=true&token=0ec4333c4c239dc2eae21220f6504c30`,
-      method: "GET"
-    }).then(function (response) {
-      console.log(response)
-      createAirlinedata(response)
-    })
-    $.ajax({
-      url: `http://api.travelpayouts.com/v2/prices/month-matrix?currency=usd&origin=${from}&destination=${destination}&month=${start.format("YYYY-MM-DD")}&show_to_affiliates=true&token=0ec4333c4c239dc2eae21220f6504c30`,
-      method: "GET"
-    }).then(function (response) {
-      console.log(response)
-    })
+    // // Flight API
+    // $.ajax({
+    //   url: `http://api.travelpayouts.com/v2/prices/month-matrix?currency=usd&origin=LAX&destination=JFK&month=${start.format("YYYY-MM-DD")}&show_to_affiliates=true&token=0ec4333c4c239dc2eae21220f6504c30`,
+    //   method: "GET"
+    // }).then(function (response) {
+    //   console.log(response)
+    //   createAirlinedata(response)
+    // })
+    // $.ajax({
+    //   url: `http://api.travelpayouts.com/v2/prices/month-matrix?currency=usd&origin=${from}&destination=${destination}&month=${start.format("YYYY-MM-DD")}&show_to_affiliates=true&token=0ec4333c4c239dc2eae21220f6504c30`,
+    //   method: "GET"
+    // }).then(function (response) {
+    //   console.log(response)
+    // })
     
     
     // Ticketmaster API City 
