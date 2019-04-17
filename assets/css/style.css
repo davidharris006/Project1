@@ -92,7 +92,7 @@
 div {
     display: inline-block;
     font-size: 22px;
-    font-weight: bolder;
+    /* font-weight: bolder; */
     color: black;
     text-align: center;
     height: auto;
