@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+ 
   function yelppoidata(somearr) {
     $('#yelppoi').css('display', 'block')
     var result = somearr.businesses;
@@ -181,6 +181,7 @@ $(document).ready(function () {
       if (options.crossDomain && $.support.cors) {
         options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
       }
+      return start
     });
 
 
@@ -225,7 +226,7 @@ $(document).ready(function () {
     var settings2 = {
       "async": true,
       "crossDomain": true,
-      "url": `https://app.ticketmaster.com/discovery/v2/events?apikey=pmgv5WgmN8XawGTxvYH4j912nx7ijBIw&city=${destination}&sort=date,asc&localStartDate`,
+      "url": `https://app.ticketmaster.com/discovery/v2/events?apikey=pmgv5WgmN8XawGTxvYH4j912nx7ijBIw&city=${destination}&sort=date,asc&localStartDateTime=${start.format('YYYY-MM-DDTHH:mm:ss')}`,
       "method": "GET",
       "headers": {
         "cache-control": "no-cache",
