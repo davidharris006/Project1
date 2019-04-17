@@ -17,7 +17,7 @@
 
 #yelp {
   font-size: 22px;
-  text-align: center;
+  text-align: left;
   padding: 5px;
   border-collapse: separate;
   height: 225px;
@@ -37,16 +37,9 @@
   display: none;
 }
 
-/* #yelppoitbl {
-  font-size: 22px;
-  text-align: center;
-  padding: 5px;
-  border-collapse: separate;
-  height: 225px;
-  overflow: auto;
-  align-self: center; 
-  display: none;
-} */
+#yelppoitbl {
+  text-align: left;
+}
 
 yelppoitbl:nth-child(odd) {
   background: -webkit-linear-gradient(-45deg, rgba(183,222,237,1) 0%,
@@ -159,6 +152,7 @@ div {
   height: 100px;
   width: 100px;
   float: left;
+  margin-right: 10px;
 }
 
 .flexdisplay {
