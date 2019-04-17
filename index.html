@@ -14,6 +14,9 @@
   <!-- Link to our custom CSS -->
   <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/style.css">
 
+  <!-- Link to Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Averia+Serif+Libre" rel="stylesheet">
+
 </head>
 
 <body>
@@ -21,7 +24,7 @@
   <!-- <div class="col-lg-12"> -->
   <div class="jumbotron rounded w-75">
     <div class="container">
-      <h1 class="display-4">Travel</h1>
+      <h1 class="display-4">TravelGuide</h1>
       <!-- <p>&nbsp;</p> -->
     </div>
   </div>
@@ -50,34 +53,35 @@
             <input type="date" class="form-control" id="endDate" value="2019-08-31"><br>
           </div>
         </div><br>
-      </form>
+      </div>
+    </div><br>
+    <div class="row">
+      <div class="col-lg-12 align-center">
+    <div id="check">
+      <div class="checkboxes">
+        <input id="events" type='checkbox' checked='yes'></input>
+        <img  src="https://i.gifer.com/7TaD.gif" style="width:75%; height:100%; border-radius:20px;" alt="">
+      </div>
     </div>
-  </div><br>
-  <div id="check">
     <div class="checkboxes">
-      <input id="cars" type='checkbox' checked='yes'></input>
-      <img src="./images/car.gif" alt="">
+      <input id="sights" type='checkbox' checked='yes'></input>
+      <img src="https://i.gifer.com/FG7V.gif" style="width:75%; height:100%; border-radius:20px;" alt="">
+    </div><br><br>
+    
+      <button type="submit" id="submit-btn" class="btn btn-primary">SUBMIT</button>
+      <button id="save-btn" class="btn btn-primary">SAVE</button>
     </div>
-  </div>
-  <div class="checkboxes">
-    <input id="hotels" type='checkbox' checked='yes'></input>
-    <img src="./images/hotel-gif.gif" alt="">
-  </div><br><br>
-
-  <div class="col-lg-6">
-    <button type="submit" id="submit-btn" class="btn btn-primary">SUBMIT</button>
-    <button id="save-btn" class="btn btn-primary">SAVE</button>
-  </div>
+  </form>
   <br><br><br>
+</div>
 
   <!-- After submit is clicked the search results are shown below -->
+  <div class="container">
   <div class="row">
     <!-- Yelp Hotel info goes here -->
     <div class="col-lg-8 center" id="yelp"></div>
     <!-- Weather info here -->
-  </div>
-  <div class="row">
-    <div class="col-lg-6 center" id="weather"></div>
+    <div class="col-lg-4 center" id="weather"></div>
   </div>
   <br><br>
 
@@ -88,10 +92,11 @@
   <br><br><br>
   <!-- Ticketmaster Events -->
   <div class="row">
-    <div class="col-lg-6" id="ticket-master"><br></div>
+    <div class="col-lg-8" id="ticket-master"><br></div>
     <br>
     <!-- <div class="col-lg-6" id="rental-car"></div> -->
   </div>
+</div>
 
   <!-- jQuery links -->
   <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="

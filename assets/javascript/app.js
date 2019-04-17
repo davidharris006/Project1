@@ -1,5 +1,5 @@
 $(document).ready(function () {
- 
+
   function yelppoidata(somearr) {
     $('#yelppoi').css('display', 'block')
     var result = somearr.businesses;
@@ -31,7 +31,7 @@ $(document).ready(function () {
       poiDiv.css('display', 'block');
 
       $('#yelppoi').append(poiDiv);
-
+     
     }
 
   }
@@ -40,7 +40,7 @@ $(document).ready(function () {
     $('#yelp').css('display', 'block')
     var result = somearr.businesses;
     console.log(result);
-    
+
     var hotel = ['HOTELS'];
     $("#yelp").append("<br>" + hotel + "<br><br>");
 
@@ -78,14 +78,14 @@ $(document).ready(function () {
       $("#yelp").append(hotelDiv);
     };
 
-    // Extracts and displays Weather Report
-    function weather() {
-      var weather = $("<tr>").append(
-        $("<td>").append('<img src="./images/weather2.jpg" style="width:200px;height:200px;">')
-      );
-      $('#weather').append(weather)
-    }
-    weather();
+    // // Extracts and displays Weather Report
+    // function weather() {
+    //   var weather = $("<tr>").append(
+    //     $("<td>").append('<img src="./images/weather2.jpg" style="width:200px;height:200px;">')
+    //   );
+    //   $('#weather').append(weather)
+    // }
+    // weather();
 
 
   }
@@ -97,9 +97,9 @@ $(document).ready(function () {
 
 
     // Heading for events
-    var newEvent = $("<br>" + '<img src="./images/events.gif" style="width:200px;height:200px;">' + "<br><br>");
+    
 
-    $('#ticket-master').append(newEvent);
+ 
 
     // Extracts event info from Ticket Master
 
@@ -116,9 +116,10 @@ $(document).ready(function () {
 
       tickets.append(nameevent + "<br>" + venue + "<br>" + startdate + "&nbsp&nbsp&nbsp" + starttime
         + "<br>" + "Event Type: " + type + "&nbsp&nbsp&nbsp" + "Genre: " + genre + "<br> ");
-      
+
       $('#ticket-master').css('display', 'block')
       $('#ticket-master').append(tickets);
+      $('#ticket-master').append('<br>')
       
     }
   }
@@ -162,23 +163,48 @@ $(document).ready(function () {
   $('#submit-btn').on('click', function (event) {
     event.preventDefault();
 
-    $('#airline').empty()
+    $('#yelppoi').empty()
     $('#yelp').empty()
-    $('#ticketmaster').empty()
+    $('#ticket-master').empty()
     
     let destination = "";
     let start = "";
     let end = "";
 
     // Takes the user inputs from the specified IDs
-    
+
     destination = $("#destination").val().trim();
     start = moment($("#startDate").val().trim());
     end = moment($("#endDate").val().trim());
 
     console.log(end);
 
-    
+    // weather API
+    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" +
+      destination + "&units=imperial&appid=0d696a008b1f28e271bde7e78f277a66&cnt=11";
+
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    })
+      .then(function (response) {
+        console.log(response);
+
+        var weatherData = "";
+        weatherData += "<h3>" + response.city.name + " Weather</h3>";
+        $.each(response.list, function (index, val) {
+            weatherData += "<p>"
+            weatherData += "<b>Day</b> " + index + ": "
+            weatherData += val.main.temp + "° F"
+            weatherData += "<span> | " + val.weather[0].description + "</span>";
+            weatherData += "<img src='https://openweathermap.org/img/w/" + val.weather[0].icon + ".png'>"
+            weatherData += "</p>"
+        });
+        $("#weather").html(weatherData);
+
+      });
+
+
     $("#destination").val("");
     $("#startDate").val("");
     $("#endDate").val("");
@@ -192,6 +218,8 @@ $(document).ready(function () {
 
 
     // Yelp POI API
+
+    if (sights.checked) {
     var settings1 = {
       "async": true,
       "crossDomain": true,
@@ -209,7 +237,7 @@ $(document).ready(function () {
       console.log(response);
       yelppoidata(response)
     });
-
+  }
 
 
     // // Flight API
@@ -226,9 +254,11 @@ $(document).ready(function () {
     // }).then(function (response) {
     //   console.log(response)
     // })
-    
-    
+
+
     // Ticketmaster API City 
+
+    if (events.checked) {
     var settings2 = {
       "async": true,
       "crossDomain": true,
@@ -245,8 +275,8 @@ $(document).ready(function () {
       ticketmasterdata(response);
     });
 
-
-    if (hotels.checked) {
+  }
+    
       // Yelp hotel API
       var settings = {
         "async": true,
@@ -264,7 +294,7 @@ $(document).ready(function () {
         console.log(response);
         yelpdata(response)
       });
-    }
+    
 
 
   });
