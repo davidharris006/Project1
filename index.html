@@ -33,13 +33,7 @@
     <div class="col-lg-10">
       <form>
         <div class="form-row">
-          <div class="col-md-1"></div>
-          <div class="col-md-3">
-            <label for="inputFrom">From (City)</label>
-            <input type="text" class="form-control" id="from" placeholder="Starting City">
-          </div>
-
-          <div class="col-md-3">
+          <div class="col-md-4">
             <label for="inputDestination">Destination (City)</label>
 
             <input type="text" class="form-control" id="destination" placeholder="Destination City">
@@ -47,16 +41,16 @@
           <!-- </div><br> -->
           <!-- <div class="form-row"> -->
 
-          <div class="col-md-2">
+          <div class="col-md-4">
             <label for="inputStartDate">Start Date</label>
             <input type="date" class="form-control" id="startDate" value="2019-08-19">
           </div>
-          <div class="col-md-2">
+          <div class="col-md-4">
             <label for="inputEndDate">End Date</label>
             <input type="date" class="form-control" id="endDate" value="2019-08-31"><br>
           </div>
-          <div class="col-md-1"></div>
         </div><br>
+      </form>
     </div>
   </div><br>
   <div id="check">
@@ -69,7 +63,7 @@
     <input id="hotels" type='checkbox' checked='yes'></input>
     <img src="./images/hotel-gif.gif" alt="">
   </div><br><br>
-  
+
   <div class="col-lg-6">
     <button type="submit" id="submit-btn" class="btn btn-primary">SUBMIT</button>
     <button id="save-btn" class="btn btn-primary">SAVE</button>
@@ -81,9 +75,12 @@
     <!-- Yelp Hotel info goes here -->
     <div class="col-lg-8 center" id="yelp"></div>
     <!-- Weather info here -->
-    <div class="col-lg-4" id="weather"></div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6 center" id="weather"></div>
   </div>
   <br><br>
+
   <div class="row">
     <div class="col-lg-8 center" id="yelppoi"></div>
   </div>
@@ -96,7 +93,7 @@
   </div>
 
   <!-- jQuery links -->
-  <script src="http://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
     crossorigin="anonymous"></script>
 
   <!-- Bootstrap links -->

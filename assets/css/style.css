@@ -160,6 +160,7 @@ div {
   height: 100px;
   width: 100px;
   float: left;
+  margin-right: 10px;
 }
 
 .flexdisplay {
