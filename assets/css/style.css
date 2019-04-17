@@ -78,6 +78,7 @@ yelppoitbl:nth-child(even) {
   font-size: 22px;
   text-align: center;
   padding: 5px;
+  
 }
 
 #ticket-master:nth-child(odd) {
