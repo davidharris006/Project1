@@ -1,5 +1,5 @@
 $(document).ready(function () {
- 
+
   function yelppoidata(somearr) {
     $('#yelppoi').css('display', 'block')
     var result = somearr.businesses;
@@ -13,7 +13,7 @@ $(document).ready(function () {
       var addressfirst = result[i].location.display_address[1]
       var addresssecond = result[i].location.display_address[2]
       var rating = result[i].rating
-     
+
 
       var checkmark = $('<input type="checkbox" id="checkbox-' + i + '">');
       var img = $('<img class="images" style="width:200px;height:200px;" id ="image-' + i + '">');
@@ -34,7 +34,7 @@ $(document).ready(function () {
     $('#yelp').css('display', 'block')
     var result = somearr.businesses;
     console.log(result);
-    
+
     var hotel = ['HOTELS'];
     $("#yelp").append("<br>" + hotel + "<br><br>");
 
@@ -72,14 +72,14 @@ $(document).ready(function () {
       $("#yelp").append(hotelDiv);
     };
 
-    // Extracts and displays Weather Report
-    function weather() {
-      var weather = $("<tr>").append(
-        $("<td>").append('<img src="./images/weather2.jpg" style="width:200px;height:200px;">')
-      );
-      $('#weather').append(weather)
-    }
-    weather();
+    // // Extracts and displays Weather Report
+    // function weather() {
+    //   var weather = $("<tr>").append(
+    //     $("<td>").append('<img src="./images/weather2.jpg" style="width:200px;height:200px;">')
+    //   );
+    //   $('#weather').append(weather)
+    // }
+    // weather();
 
 
   }
@@ -110,7 +110,7 @@ $(document).ready(function () {
 
       tickets.append(nameevent + "<br>" + venue + "<br>" + startdate + "&nbsp&nbsp&nbsp" + starttime
         + "<br>" + "Event Type: " + type + "&nbsp&nbsp&nbsp" + "Genre: " + genre + "<br> ");
-      
+
       $('#ticket-master').css('display', 'block')
       $('#ticket-master').append(tickets);
       $('#ticket-master').append('<br>')
@@ -166,14 +166,39 @@ $(document).ready(function () {
     let end = "";
 
     // Takes the user inputs from the specified IDs
-    
+
     destination = $("#destination").val().trim();
     start = moment($("#startDate").val().trim());
     end = moment($("#endDate").val().trim());
 
     console.log(end);
 
-    
+    // weather API
+    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" +
+      destination + "&units=imperial&appid=0d696a008b1f28e271bde7e78f277a66&cnt=11";
+
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    })
+      .then(function (response) {
+        console.log(response);
+
+        var weatherData = "";
+        weatherData += "<h3>" + response.city.name + " Weather</h3>";
+        $.each(response.list, function (index, val) {
+            weatherData += "<p>"
+            weatherData += "<b>Day</b> " + index + ": "
+            weatherData += val.main.temp + "° F"
+            weatherData += "<span> | " + val.weather[0].description + "</span>";
+            weatherData += "<img src='https://openweathermap.org/img/w/" + val.weather[0].icon + ".png'>"
+            weatherData += "</p>"
+        });
+        $("#weather").html(weatherData);
+
+      });
+
+
     $("#destination").val("");
     $("#startDate").val("");
     $("#endDate").val("");
@@ -223,8 +248,8 @@ $(document).ready(function () {
     // }).then(function (response) {
     //   console.log(response)
     // })
-    
-    
+
+
     // Ticketmaster API City 
 
     if (events.checked) {
