@@ -112,8 +112,10 @@ $(document).ready(function () {
 
       tickets.append(nameevent + "<br>" + venue + "<br>" + startdate + "&nbsp&nbsp&nbsp" + starttime
         + "<br>" + "Event Type: " + type + "&nbsp&nbsp&nbsp" + "Genre: " + genre + "<br>");
-
+      
+      
       $('#ticket-master').append(tickets);
+      
     }
   }
 
@@ -165,7 +167,7 @@ $(document).ready(function () {
     let end = "";
 
     // Takes the user inputs from the specified IDs
-    // from = $("#from").val().trim();
+    from = $("#from").val().trim();
     destination = $("#destination").val().trim();
     start = moment($("#startDate").val().trim());
     end = moment($("#endDate").val().trim());
