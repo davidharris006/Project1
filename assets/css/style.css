@@ -234,11 +234,7 @@ footer {
 }
 
 .jumbotron {
-<<<<<<< HEAD
-  background-color: rgba(255, 255, 255, .7)
-=======
   background: rgba(224, 251, 255, 0.5);
->>>>>>> 86b22fcced98ddbc4335d4b348b995a0adee66c0
 }
   
 @media only screen and (max-width: 980px) {
