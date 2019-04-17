@@ -21,7 +21,7 @@
 }
 
 .display-4 {
-  color: black;
+  color: white;
 }
 
 #yelppoi {
@@ -230,7 +230,7 @@ footer {
 }
 
 .jumbotron {
-  background-color: rgba(237, 255, 102, .7)
+  background-color: rgba(6, 31, 105, .7)
 }
   
 @media only screen and (max-width: 980px) {
