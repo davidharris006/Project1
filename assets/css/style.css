@@ -111,6 +111,7 @@ yelppoitbl:nth-child(even) {
 #weather {
   background: rgba(224, 251, 255, 0.5);
   font-size: 18px;
+  display: none;
 }
 
 div {

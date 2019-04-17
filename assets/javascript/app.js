@@ -123,10 +123,15 @@ $(document).ready(function () {
         + "<br>" + "Event Type: " + type + "&nbsp&nbsp&nbsp" + "Genre: " + genre + "<br> ");
 
       $('#ticket-master').css('display', 'block')
+      $('#ticketmasterdata').css('display', 'block')
       $('#ticket-master').append(tickets);
       $('#ticket-master').append('<br>')
 
     }
+  }
+
+  function reset () {
+    
   }
 
   function createAirlinedata(somearr) {
@@ -171,6 +176,7 @@ $(document).ready(function () {
     $('#yelppoi').empty()
     $('#yelp').empty()
     $('#ticket-master').empty()
+    
 
     let destination = "";
     let start = "";
@@ -205,6 +211,7 @@ $(document).ready(function () {
           weatherData += "<span>" + val.weather[0].description + "</span>";
           weatherData += "</p>"
         });
+        $('#weather').css('display', 'block')
         $("#weather").html(weatherData);
 
       });
