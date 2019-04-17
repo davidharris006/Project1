@@ -21,7 +21,7 @@
 }
 
 .display-4 {
-  color: white;
+  color: black;
   font-family: 'Averia Serif Libre', cursive;
 }
 
@@ -217,7 +217,7 @@ footer {
 }
 
 .jumbotron {
-  background-color: rgba(6, 31, 105, .7)
+  background: rgba(224, 251, 255, 0.5);
 }
   
 @media only screen and (max-width: 980px) {
