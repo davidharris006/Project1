@@ -163,7 +163,7 @@ $(document).ready(function () {
     let end = "";
 
     // Takes the user inputs from the specified IDs
-    from = $("#from").val().trim();
+    // from = $("#from").val().trim();
     destination = $("#destination").val().trim();
     start = moment($("#startDate").val().trim());
     end = moment($("#endDate").val().trim());

@@ -47,6 +47,7 @@ yelppoitbl {
   overflow: auto;
   align-self: center; 
   display: none;
+
 }
 
 yelppoitbl:nth-child(odd) {
@@ -160,6 +161,7 @@ div {
   height: 100px;
   width: 100px;
   float: left;
+  margin-right: 10px;
 }
 
 .flexdisplay {
