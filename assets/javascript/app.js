@@ -4,7 +4,9 @@ $(document).ready(function () {
     $('#yelppoi').css('display', 'block')
     var result = somearr.businesses;
     console.log(result)
-    $("#yelppoi").append("<br>SIGHTS<br><br>")
+
+    var sights = ['<img src="https://i.gifer.com/FG7V.gif" style="width:25%; height:50%; border-radius:20px;" alt="">']
+    $("#yelppoi").append(sights)
 
     for (let i = 0; i < 9; i++) {
       var poiDiv = $("<div class='table table-borderless' id='yelppoi'>");
@@ -14,16 +16,19 @@ $(document).ready(function () {
       var addresssecond = result[i].location.display_address[2]
       var rating = result[i].rating
 
-      // Creates text 
+      // Creates text display for Points of Interest
       var text = "Name: " + name + "<br>" + "Address: " + addressfirst + " " + addresssecond + "<br>" + "Rating: " + rating + "<br>";
 
       // var checkmark = $('<input type="checkbox" id="checkbox-' + i + '">' + '<label>' + '<img class="images" style="width:200px;height:200px;" id ="image-' 
       // + i + '" + src="' + result[i].image_url + "'>" + text + "</label>" );
-      var input = $(`<input type='checkbox' id='checkbox-${i}'>`);
+      // Creates checkboxes
+      var input = $(`<input type='checkbox' id='checkbox-${i}'></input>`);
+      // Appends the text for Points of Interest
       var content = $(`<label for='checkbox-${i}'>${text}</label>`);
+      // Displays the hotel image
       var img = $(`<img class='images' style='width:200px;height:200px;' id='image-${i}' src='${result[i].image_url}'>`);
 
-      poiDiv.append(input);
+      poiDiv.prepend(input);
       poiDiv.append(img);
       poiDiv.append(content);
       
@@ -41,8 +46,8 @@ $(document).ready(function () {
     var result = somearr.businesses;
     console.log(result);
 
-    var hotel = ['HOTELS'];
-    $("#yelp").append("<br>" + hotel + "<br><br>");
+    var hotelGif = ["<img src=./images/hotel-gif.gif>"];
+    $("#yelp").append("<br>" + hotelGif + "<br><br>");
 
     for (let i = 0; i < 9; i++) {
 
@@ -97,7 +102,8 @@ $(document).ready(function () {
 
 
     // Heading for events
-    
+    var eventsPic = ['<img src="https://i.gifer.com/7TaD.gif" style="width:75%; height:100%; border-radius:20px;" alt="">'];
+    $("#yelppoi").append(eventsPic);
 
  
 

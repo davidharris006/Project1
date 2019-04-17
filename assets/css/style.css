@@ -1,8 +1,4 @@
-
-
-
-
-  table, td, th,  tr {
+table, td, th,  tr {
     border-collapse: separate;
     font-size: 14px;
     text-align: center;
@@ -34,6 +30,7 @@
   overflow: auto;
   align-self: center; 
   display: none;
+  
 }
 
 #yelppoi tr:nth-child(even){
@@ -43,6 +40,27 @@
 #yelppoi tr:nth-child(odd){
   background-color: whitesmoke;
 }
+yelppoitbl {
+  font-size: 22px;
+  text-align: center;
+  padding: 5px;
+  border-collapse: separate;
+  height: 225px;
+  overflow: auto;
+  align-self: center; 
+  display: none;
+}
+
+yelppoitbl:nth-child(odd) {
+  background: -webkit-linear-gradient(-45deg, rgba(183,222,237,1) 0%,
+  rgba(113,206,239,1) 42%, rgba(33,180,226,1) 51%, rgba(183,222,237,1) 100%);
+}
+
+yelppoitbl:nth-child(even) {
+  background: -webkit-linear-gradient(-45deg, rgba(248,80,50,1) 0%, rgba(241,111,92,1) 23%,
+  rgba(246,41,12,1) 51%, rgba(240,47,23,1) 71%, rgba(231,56,39,1) 100%);
+}
+
 #yelp:nth-child(odd) {
   background: -webkit-linear-gradient(-45deg, rgba(183,222,237,1) 0%,
    rgba(113,206,239,1) 42%, rgba(33,180,226,1) 51%, rgba(183,222,237,1) 100%);
@@ -92,7 +110,7 @@
 div {
     display: inline-block;
     font-size: 22px;
-    /* font-weight: bolder; */
+    font-weight: bolder;
     color: black;
     text-align: center;
     height: auto;
@@ -120,7 +138,6 @@ div {
   background-image: url("../../images/palm-tree.jpg");
   height:150px;
   border-radius: 15px;
-  width: 300px;
 }
 
 .checkboxes input {
@@ -211,7 +228,7 @@ footer {
 }
 
 .jumbotron {
-  background-color: rgba(6, 31, 105, .7)
+  background-color: rgba(255, 255, 255, .7)
 }
   
 @media only screen and (max-width: 980px) {
