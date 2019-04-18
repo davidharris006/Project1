@@ -62,9 +62,6 @@ yelppoitbl {
 
 #yelppoi:nth-child(even) {
   background: linear-gradient(red, white, blue);
-  /* background: #43c6ac; /* fallback for old browsers */
-  /* background: -webkit-linear-gradient(to right, #43c6ac, #f8ffae); Chrome 10-25, Safari 5.1-6 */
-  /* background: linear-gradient(to right, #43c6ac, #f8ffae); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ */
 }
 
 #yelppoi:nth-child(odd) {
@@ -73,14 +70,15 @@ yelppoitbl {
 }
 
 #yelp:nth-child(odd) {
-  background: -webkit-linear-gradient(-45deg, rgba(183,222,237,1) 0%,
-   rgba(113,206,239,1) 42%, rgba(33,180,226,1) 51%, rgba(183,222,237,1) 100%);
+  background-color: green; /*for compatibility with older browsers*/
+	background-image: linear-gradient(lime,yellow, green);
    
 }
 
+
 #yelp:nth-child(even) {
-  background: -webkit-linear-gradient(-45deg, rgba(248,80,50,1) 0%, rgba(241,111,92,1) 23%,
-   rgba(246,41,12,1) 51%, rgba(240,47,23,1) 71%, rgba(231,56,39,1) 100%);
+  background-color: purple;
+  background-image: linear-gradient(orangered,red, purple);
 }
 
 #yelp:hover {
@@ -93,6 +91,7 @@ yelppoitbl {
   overflow: auto;
   height: 225px;
 }
+
 #ticketmasterdata {
   font-size: 22px;
   text-align: center;
@@ -154,23 +153,21 @@ div {
     box-sizing: border-box;
     
 }
-.checkboxes {
-  background-image: url("../../images/palm-tree.jpg");
+.gifBorders {
   height:150px;
-  width: 300px;
+  width: 200px;
+  border: 5px groove yellow;
   border-radius: 15px;
 }
 
-.checkboxes input {
+#sights, #events { 
   height: 35px;
   width: 35px;
-  position: relative;
   cursor: pointer;
-  border-color: black;
-  border-width: 10px;
 }
 
-#submit-btn {
+
+#submit-btn, #save-btn {
     cursor: pointer;
     font-size: 25px;
     color: white;
@@ -178,10 +175,9 @@ div {
     background-size: 100%;
     height: auto;
     font-weight: bolder;
-    border-color: black;
-    border-width: 7px;
+    border: 5px groove yellow;
+    border-radius: 15px;
     padding: 11px;
-    border-radius: 11px;
     font-style: inherit;
     text-align: center;
     -webkit-text-stroke-width: 3px;
@@ -197,29 +193,14 @@ div {
 #submit-btn:hover {
   color: yellow;
 }
-#save-btn {
-  cursor: pointer;
-    font-size: 25px;
-    color: white;
-    height: auto;
-    font-weight: bolder;
-    border-color: black;
-    border-width: 7px;
-    padding: 11px;
-    border-radius: 11px;
-    font-style: inherit;
-    text-align: center;
-    -webkit-text-stroke-width: 3px;
-    -webkit-text-stroke-color: black;
-}
 
 #save-btn:hover {
-  background-color: yellow;
+  color: red;
 }
 
 #save-btn:active {
-  background-color:red; /* When the button is clicked */
-  box-shadow: 0 7px green;
+  background-color: purple; /* When the button is clicked */
+  box-shadow: 0 7px orangered;
   transform: translateY(4px);
 }
 .images {
