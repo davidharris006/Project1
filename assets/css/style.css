@@ -150,7 +150,8 @@ div {
 .checkboxes {
   background-image: url("../../images/palm-tree.jpg");
   height:150px;
-  border-radius: 15px;
+  width: 200px;
+  border-radius: 30px;
 }
 
 .checkboxes input {
