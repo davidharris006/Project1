@@ -5,7 +5,7 @@ $(document).ready(function () {
     var result = somearr.businesses;
     console.log(result)
 
-    var sights = ['<img src="https://i.gifer.com/FG7V.gif" style="width:30%; height:60%; border-radius:20px;" alt="">']
+    var sights = ['<center><img src="https://i.gifer.com/FG7V.gif" style="width:200px; height:150px; border-radius:20px;" alt=""></center>'];
     $("#yelppoi").append("<br>" + sights + "<br><br>")
 
     for (let i = 0; i < 9; i++) {
@@ -23,7 +23,7 @@ $(document).ready(function () {
       var input = $(`<input type='checkbox' id='checkbox-${i}'></input>`);
       // Appends the text for Points of Interest
       var content = $(`<label for='checkbox-${i}'>${text}</label>`);
-      // Displays the hotel image
+      // Displays the POI image
       var img = $(`<img class='images' style='width:200px;height:200px;' id='image-${i}' src='${result[i].image_url}'>`);
 
 
@@ -45,7 +45,7 @@ $(document).ready(function () {
     var result = somearr.businesses;
     console.log(result);
 
-    var hotelGif = ["<img src=./images/hotel-gif.gif>"];
+    var hotelGif = ["<center><img src=./images/hotel-gif.gif style=width:100px;height:100px;></center>"];
     $("#yelp").append("<br>" + hotelGif + "<br><br>");
 
     for (let i = 0; i < 9; i++) {
@@ -102,7 +102,7 @@ $(document).ready(function () {
     console.log(result);
 
     // Heading for events
-    var eventsPic = ['<img src="https://i.gifer.com/7TaD.gif" style="width:30%; height:60%; border-radius:20px;" alt="">'];
+    var eventsPic = ['<center><img src="https://i.gifer.com/7TaD.gif" style="width:30%; height:60%; border-radius:20px;" alt=""></center>'];
     $("#ticket-master").append("<br>" + (eventsPic) + "<br><br>");
 
 
