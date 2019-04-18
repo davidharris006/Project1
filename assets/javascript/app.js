@@ -5,36 +5,35 @@ $(document).ready(function () {
     var result = somearr.businesses;
     console.log(result)
 
-    var sights = ['<center><img src="https://i.gifer.com/FG7V.gif" style="width:200px; height:150px; border-radius:20px;" alt=""></center>'];
-    $("#yelppoi").append("<br>" + sights + "<br><br>")
+    var sights = ['<center><img src="https://i.gifer.com/FG7V.gif" class="gifs" alt=""></center>'];
+    $("#yelppoi").append("<br>" + sights + "<br>")
 
     for (let i = 0; i < 9; i++) {
       var poiDiv = $("<div class='table table-borderless' id='yelppoi'>");
 
       var name = result[i].name
-      var addressfirst = result[i].location.display_address[1]
-      var addresssecond = result[i].location.display_address[2]
+      var addressfirst = result[i].location.display_address[0]
+      var addresssecond = result[i].location.display_address[1]
       var rating = result[i].rating
 
       // Creates text display for Points of Interest
-      var text = "Name: " + name + "<br>" + "Address: " + addressfirst + " " + addresssecond + "<br>" + "Rating: " + rating + "<br>";
 
       // Creates checkboxes
-      var input = $(`<input type='checkbox' id='checkbox-${i}'></input>`);
+      var input = $(`<input type='checkbox' id='checkbox-${i}' style='height:20px;width:20px;'></input>`);
+
+      var text = "<br>" + name + "<br>" + addressfirst + "<br>" + addresssecond + "<br>" + "Rating: " + rating + "<br>";
+
       // Appends the text for Points of Interest
-      var content = $(`<label for='checkbox-${i}'>${text}</label>`);
+      // var content = $(`<label for='checkbox-${i}'>${text}</label>`);
       // Displays the POI image
-      var img = $(`<img class='images' style='width:200px;height:200px;' id='image-${i}' src='${result[i].image_url}'>`);
+      var img = $(`<img class='images' id='image-${i}' src='${result[i].image_url}'>`);
 
-
-      poiDiv.append(img);
-      poiDiv.append(content);
       poiDiv.append(input);
-
+      poiDiv.prepend(img);
+      poiDiv.append(text);
+      
       poiDiv.css('display', 'block');
-
       $('#yelppoi').append(poiDiv);
-
     }
 
   }
@@ -46,7 +45,7 @@ $(document).ready(function () {
     console.log(result);
 
     var hotelGif = ["<center><img src=./images/hotel-gif.gif style=width:100px;height:100px;></center>"];
-    $("#yelp").append("<br>" + hotelGif + "<br><br>");
+    $("#yelp").append("<br>" + hotelGif + "<br>");
 
     for (let i = 0; i < 9; i++) {
 
@@ -69,17 +68,16 @@ $(document).ready(function () {
 
       // Creating a p tag with info
       var p = $("<p>").text("Name: " + name);
-      var img = $('<img class="images" style="width:200px;height:200px;" id ="image-' + i + '">')
+      var img = $('<img class="images" id ="image-' + i + '">')
       img.attr("src", result[i].image_url)
-      var checkmark = $('<input type="checkbox" id="checkbox-' + i + '">');
+      var checkmark = $('<input type="checkbox" + style="width:20px;height:20px;" + id="checkbox-' + i + '">');
 
       // Appending the p tag to the Hotel Div we created
+      hotelDiv.append(checkmark);
+      hotelDiv.append(img);
+      hotelDiv.append("<br>" + name + "<br>" + 'Price Range: ' + price + "<br>" + address + '<br>' + 'Phone Number: ' + result[i].phone + "<br>")
 
-      hotelDiv.append("<br>" + "Name: " + name + "<br>" + 'Price Range: ' + price + "<br>" + 'Address: ' + address + '<br>' + 'Phone Number: ' + result[i].phone + "<br>")
-
-      hotelDiv.prepend(img)
-      hotelDiv.append(checkmark)
-      hotelDiv.css('display', 'block')
+      hotelDiv.css('display', 'block');
       // Append the hotelDiv to the "#yelp" div in the HTML
       $("#yelp").append(hotelDiv);
     };
@@ -102,8 +100,8 @@ $(document).ready(function () {
     console.log(result);
 
     // Heading for events
-    var eventsPic = ['<center><img src="https://i.gifer.com/7TaD.gif" style="width:30%; height:60%; border-radius:20px;" alt=""></center>'];
-    $("#ticket-master").append("<br>" + (eventsPic) + "<br><br>");
+    var eventsPic = ['<center><img src="https://i.gifer.com/7TaD.gif" class="gifs" alt=""></center>'];
+    $("#ticket-master").append("<br>" + (eventsPic) + "<br>");
 
 
     // Extracts event info from Ticket Master
@@ -118,20 +116,21 @@ $(document).ready(function () {
       var venue = result[i]._embedded.venues[0].name
 
       var tickets = $("<div id='ticketmasterdata'>");
+      var checkmark = $('<input type="checkbox" + style="width:12px;height:12px;" + id="checkbox-' + i + '">');
 
-      tickets.append(nameevent + "<br>" + venue + "<br>" + startdate + "&nbsp&nbsp&nbsp" + starttime
-        + "<br>" + "Event Type: " + type + "&nbsp&nbsp&nbsp" + "Genre: " + genre + "<br> ");
+      tickets.append(checkmark);
+      tickets.append("    " + nameevent + "<br>" + venue + "<br>" + startdate + "&nbsp&nbsp&nbsp" + starttime
+        + "<br>" + "Event Type: " + type + "&nbsp&nbsp&nbsp" + "Genre: " + genre);
 
       $('#ticket-master').css('display', 'block')
-      $('#ticketmasterdata').css('display', 'block')
       $('#ticket-master').append(tickets);
       $('#ticket-master').append('<br>')
-
+      $('#ticket-master').append('<br>')
     }
   }
 
-  function reset () {
-    
+  function reset() {
+
   }
 
   function createAirlinedata(somearr) {
@@ -176,7 +175,7 @@ $(document).ready(function () {
     $('#yelppoi').empty()
     $('#yelp').empty()
     $('#ticket-master').empty()
-    
+
 
     let destination = "";
     let start = "";
