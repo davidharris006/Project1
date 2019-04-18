@@ -39,6 +39,14 @@ table, td, th,  tr {
   
 }
 
+/* Sets specs for GIFs appearing in headings */
+.gifs {
+  width: 200px;
+  height: 150px;
+  border: 10 px groove black;
+  border-radius: 10px;
+  align-content: center;
+}
 
 yelppoitbl {
   font-size: 22px;
@@ -53,16 +61,14 @@ yelppoitbl {
 
 
 #yelppoi:nth-child(even) {
-  background: #43c6ac; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #43c6ac, #f8ffae); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #43c6ac, #f8ffae); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(red, white, blue);
+  /* background: #43c6ac; /* fallback for old browsers */
+  /* background: -webkit-linear-gradient(to right, #43c6ac, #f8ffae); Chrome 10-25, Safari 5.1-6 */
+  /* background: linear-gradient(to right, #43c6ac, #f8ffae); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ */
 }
 
 #yelppoi:nth-child(odd) {
-  background: #F0F2F0;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #000C40, #F0F2F0);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #000C40, #F0F2F0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  
+  background: linear-gradient(yellow, red, orange);
   
 }
 
@@ -91,20 +97,16 @@ yelppoitbl {
   font-size: 22px;
   text-align: center;
   padding: 5px;
-  border: 1px solid black;
-  
-  
+  border: 10px groove black;
+  border-radius: 11px;
 }
+
 
 #ticket-master:nth-child(odd) {
-  background: linear-gradient(red, yellow); 
+  background: linear-gradient(red, yellow, green, blue); 
   padding: 5px;
 }
 
-#ticket-master:nth-child(even) {
-  background: linear-gradient(blue, lime);
-  padding: 5px;
-}
 
 #ticket-master:hover {
   cursor: pointer;
@@ -155,7 +157,7 @@ div {
 .checkboxes {
   background-image: url("../../images/palm-tree.jpg");
   height:150px;
-  width: 200px;
+  width: 300px;
   border-radius: 30px;
 }
 
@@ -164,6 +166,8 @@ div {
   width: 35px;
   position: relative;
   cursor: pointer;
+  border-color: black;
+  border-width: 10px;
 }
 
 #submit-btn {
@@ -219,10 +223,12 @@ div {
   transform: translateY(4px);
 }
 .images {
-  height: 100px;
-  width: 100px;
+  height: 200px;
+  width: 200px;
   float: left;
   margin-right: 10px;
+  border: 1px groove black;
+  border-radius: 11px;
 }
 
 .flexdisplay {
@@ -254,6 +260,7 @@ html, body {
     text-align: center;
     font-size: 18 px;
     color: red;
+    font-weight: bolder;
     padding: 2px;
     background: url("../../images/hammock.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
