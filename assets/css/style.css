@@ -14,6 +14,11 @@ table, td, th,  tr {
   overflow: auto;
   align-self: center; 
   display: none;
+  
+}
+
+#headings {
+  background: -webkit-linear-gradient(to right, #ee0979, #ff6a00);
 }
 
 .display-4 {
@@ -30,6 +35,7 @@ table, td, th,  tr {
   overflow: auto;
   align-self: center; 
   display: none;
+   /* Chrome 10-25, Safari 5.1-6 */
   
 }
 
@@ -45,9 +51,6 @@ yelppoitbl {
   display: none;
 }
 
-#headings {
-  text-align: center;
-}
 
 #yelppoi:nth-child(even) {
   background: #43c6ac; /* fallback for old browsers */
@@ -90,6 +93,7 @@ yelppoitbl {
   padding: 5px;
   border: 1px solid black;
   
+  
 }
 
 #ticket-master:nth-child(odd) {
@@ -114,6 +118,7 @@ yelppoitbl {
 #weather {
   background: rgba(224, 251, 255, 0.5);
   font-size: 18px;
+  font-weight: bolder;
   display: none;
 }
 

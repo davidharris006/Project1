@@ -130,8 +130,8 @@ $(document).ready(function () {
     }
   }
 
-  function reset () {
-    
+  function reset() {
+
   }
 
   function createAirlinedata(somearr) {
@@ -176,7 +176,7 @@ $(document).ready(function () {
     $('#yelppoi').empty()
     $('#yelp').empty()
     $('#ticket-master').empty()
-    
+
 
     let destination = "";
     let start = "";
