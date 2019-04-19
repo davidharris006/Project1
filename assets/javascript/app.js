@@ -20,17 +20,13 @@ $(document).ready(function () {
       var text = "Name: " + name + "<br>" + "Address: " + addressfirst + " " + addresssecond + "<br>" + "Rating: " + rating + "<br>";
 
       // Creates checkboxes
-      var input = $(`<input type='checkbox' id='checkbox-${i}'></input>`);
-      // Appends the text for Points of Interest
-      var content = $(`<label for='checkbox-${i}'>${text}</label>`);
+     
       // Displays the POI image
       var img = $(`<img class='images' style='width:200px;height:200px;' id='image-${i}' src='${result[i].image_url}'>`);
 
 
       poiDiv.append(img);
-      poiDiv.append(content);
-      poiDiv.append(input);
-
+    
       poiDiv.css('display', 'block');
 
       $('#yelppoi').append(poiDiv);
@@ -71,14 +67,14 @@ $(document).ready(function () {
       var p = $("<p>").text("Name: " + name);
       var img = $('<img class="images" style="width:200px;height:200px;" id ="image-' + i + '">')
       img.attr("src", result[i].image_url)
-      var checkmark = $('<input type="checkbox" id="checkbox-' + i + '">');
+     
 
       // Appending the p tag to the Hotel Div we created
 
       hotelDiv.append("<br>" + "Name: " + name + "<br>" + 'Price Range: ' + price + "<br>" + 'Address: ' + address + '<br>' + 'Phone Number: ' + result[i].phone + "<br>")
 
       hotelDiv.prepend(img)
-      hotelDiv.append(checkmark)
+      
       hotelDiv.css('display', 'block')
       // Append the hotelDiv to the "#yelp" div in the HTML
       $("#yelp").append(hotelDiv);
@@ -311,7 +307,7 @@ $(document).ready(function () {
 
   });
 
-
+  
 
   // Dynamically creates checkboxes with gifs to the right
   // function appendCheck() {
